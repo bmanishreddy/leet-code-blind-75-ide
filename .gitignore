@@ -41,6 +41,7 @@ server.log
 *.bak
 
 # Model files (too large for git)
+models/
 *.gguf
 *.bin
 *.pt

@@ -12,7 +12,8 @@ class RAGHintSystem:
             knowledge_base_path = os.path.join(os.path.dirname(__file__), 'knowledge_base.json')
         
         if llm_model_path is None:
-            llm_model_path = "/Users/manishb/Desktop/Coding/cortex-sdk/Chat_bot/rag_model/foundation_model/llama-2-7b-chat-hf-q2_k.gguf"
+            # Use Deepseek-Coder-1.3B (code-specialized, fast, small)
+            llm_model_path = os.path.join(os.path.dirname(__file__), 'models', 'deepseek-coder-1.3b-instruct.Q4_K_M.gguf')
         
         self.knowledge_base = {}
         self.llm = None
@@ -43,15 +44,15 @@ class RAGHintSystem:
                 
                 # Detect Apple Silicon and use Metal GPU acceleration
                 is_apple_silicon = platform.system() == 'Darwin' and platform.machine() == 'arm64'
-                gpu_layers = 35 if is_apple_silicon else 0  # Use all layers on GPU for M1/M2/M3
+                gpu_layers = 28 if is_apple_silicon else 0  # Deepseek-1.3B has fewer layers
                 
-                print(f"🔄 Loading LLM from {self.llm_model_path}...")
+                print(f"🔄 Loading Deepseek-Coder-1.3B from {self.llm_model_path}...")
                 if is_apple_silicon:
                     print(f"🚀 Apple Silicon detected! Using Metal GPU acceleration ({gpu_layers} layers)")
                 
                 self.llm = Llama(
                     model_path=self.llm_model_path,
-                    n_ctx=2048,
+                    n_ctx=4096,  # Deepseek supports larger context
                     n_threads=4,
                     n_gpu_layers=gpu_layers,  # Use Metal GPU on Apple Silicon
                     use_mlock=True,  # Keep model in RAM for faster inference
