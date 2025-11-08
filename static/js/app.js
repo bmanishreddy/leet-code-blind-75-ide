@@ -848,6 +848,95 @@ function closeHintPanel() {
     document.getElementById('hintPanel').classList.remove('visible');
 }
 
+// Visualize algorithm
+async function visualizeAlgorithm() {
+    if (!currentQuestion) {
+        console.log('No question selected');
+        return;
+    }
+    
+    console.log('Generating visualization for:', currentQuestion.title);
+    const hintContent = document.getElementById('hintContent');
+    const hintPanel = document.getElementById('hintPanel');
+    const visualizeBtn = document.getElementById('visualizeAlgoBtn');
+    
+    // Show loading state
+    setButtonLoading(visualizeBtn, 'Generating...', '📊 Visualize Algorithm');
+    hintContent.innerHTML = '<div class="loading">🎨 Generating visual diagram...</div>';
+    hintPanel.classList.add('visible');
+    
+    try {
+        const response = await fetch('/api/visualize', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                question: currentQuestion,
+                code: editor.getValue()
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.available && data.visualization) {
+            // Format visualization
+            const steps = data.visualization.split(/STEP \d+:/);
+            let formattedHtml = `<div class="visualization-display">
+                <div class="visualization-header">
+                    <h3>📊 ${data.title || 'Algorithm Visualization'}</h3>
+                    ${data.fallback ? '<p class="fallback-notice">⚠️ Using structured fallback</p>' : ''}
+                </div>
+                <div class="visualization-content">`;
+            
+            // Process each step
+            steps.forEach((step, index) => {
+                if (step.trim()) {
+                    const lines = step.trim().split('\n');
+                    const title = lines[0] || `Step ${index}`;
+                    const content = lines.slice(1).join('\n').trim();
+                    
+                    formattedHtml += `
+                        <div class="visualization-step">
+                            <div class="step-number">STEP ${index}</div>
+                            <div class="step-title">${escapeHtml(title)}</div>
+                            <div class="step-content">
+                                <pre>${escapeHtml(content)}</pre>
+                            </div>
+                        </div>`;
+                }
+            });
+            
+            formattedHtml += `
+                </div>
+                <div class="visualization-footer">
+                    <button class="btn btn-hint-small" onclick="visualizeAlgorithm()">🔄 Regenerate</button>
+                </div>
+            </div>`;
+            
+            hintContent.innerHTML = formattedHtml;
+        } else {
+            hintContent.innerHTML = `
+                <div class="error">
+                    <h4>❌ Visualization Not Available</h4>
+                    <p>${data.error || 'Unable to generate visualization at this time.'}</p>
+                </div>`;
+        }
+        
+        restoreButton(visualizeBtn, '📊 Visualize Algorithm');
+        
+    } catch (error) {
+        console.error('Error fetching visualization:', error);
+        hintContent.innerHTML = `
+            <div class="error">
+                <h4>❌ Error</h4>
+                <p>Failed to generate visualization. Please try again.</p>
+                <button class="btn btn-hint-small" onclick="visualizeAlgorithm()">🔄 Retry</button>
+            </div>`;
+        restoreButton(visualizeBtn, '📊 Visualize Algorithm');
+    }
+}
+
 // Show solution code
 async function showSolution() {
     if (!currentQuestion) {
@@ -1153,6 +1242,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeHintBtn = document.getElementById('closeHintBtn');
     const copyCodeBtn = document.getElementById('copyCodeBtn');
     const showSolutionBtn = document.getElementById('showSolutionBtn');
+    const visualizeAlgoBtn = document.getElementById('visualizeAlgoBtn');
     
     if (compileBtn) compileBtn.addEventListener('click', compileCode);
     if (runBtn) runBtn.addEventListener('click', runTests);
@@ -1162,6 +1252,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeHintBtn) closeHintBtn.addEventListener('click', closeHintPanel);
     if (copyCodeBtn) copyCodeBtn.addEventListener('click', copyCode);
     if (showSolutionBtn) showSolutionBtn.addEventListener('click', showSolution);
+    if (visualizeAlgoBtn) visualizeAlgoBtn.addEventListener('click', visualizeAlgorithm);
     
     console.log('✓ Button listeners attached');
     

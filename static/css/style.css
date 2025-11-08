@@ -1011,3 +1011,115 @@ body {
     width: 3px;
     cursor: ew-resize;
 }
+
+/* ================ Visualization Display ================ */
+.visualization-display {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.visualization-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.25rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.visualization-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fallback-notice {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+.visualization-content {
+    padding: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.visualization-step {
+    background: rgba(102, 126, 234, 0.08);
+    border-left: 4px solid #667eea;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.visualization-step:hover {
+    background: rgba(102, 126, 234, 0.12);
+    transform: translateX(4px);
+    border-left-width: 6px;
+}
+
+.step-number {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.step-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-content {
+    margin-top: 0.75rem;
+}
+
+.step-content pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.visualization-footer {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Visualize button specific styling */
+.btn-visualize {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-visualize:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}

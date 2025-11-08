@@ -721,6 +721,144 @@ def get_solution():
             'error': str(e)
         }), 500
 
+@app.route('/api/visualize', methods=['POST'])
+def visualize_algorithm():
+    """Generate step-by-step visual diagram for the algorithm using LLM."""
+    try:
+        data = request.get_json() if request.is_json else {}
+        question = data.get('question', {})
+        user_code = data.get('code', '')
+        
+        if not question:
+            return jsonify({
+                'visualization': None,
+                'error': 'No question provided'
+            }), 400
+        
+        title = question.get('title', 'Unknown Problem')
+        description = question.get('description', '')
+        
+        # Load LLM if not already loaded
+        if not rag_system.llm and not rag_system.llm_loading_attempted:
+            rag_system.load_llm()
+        
+        if not rag_system.llm:
+            return jsonify({
+                'visualization': None,
+                'error': 'LLM not available',
+                'fallback': 'Unable to generate visualization. Please check LLM configuration.'
+            }), 500
+        
+        # Create prompt for visualization
+        prompt = f"""Generate a step-by-step visual diagram for solving this algorithm problem.
+
+Problem: {title}
+Description: {description[:200]}...
+
+Instructions:
+1. Break down the algorithm into 5-7 clear steps
+2. For each step, provide:
+   - Step number and title
+   - Visual representation using ASCII art or structured text
+   - Brief explanation (1-2 sentences)
+3. Use diagrams like:
+   - Arrays: [1, 2, 3, 4, 5]
+   - Pointers: left→  ←right
+   - Trees: Use indentation or ASCII
+   - Hash maps: {{key: value}}
+4. Show state changes between steps
+5. Keep it simple and educational
+
+Format your response as:
+STEP 1: [Title]
+[Visual diagram]
+Explanation: [Brief explanation]
+
+STEP 2: [Title]
+...
+
+Generate the visualization now:"""
+
+        try:
+            response = rag_system.llm(
+                prompt,
+                max_tokens=800,
+                temperature=0.6,
+                top_k=40,
+                stop=["Problem:", "Note:", "###"],
+                echo=False
+            )
+            
+            visualization = response['choices'][0]['text'].strip()
+            
+            # Post-process: ensure it's not empty or generic
+            if len(visualization) < 50 or "I cannot" in visualization or "I apologize" in visualization:
+                # Fallback to structured format
+                visualization = f"""STEP 1: Understand the Problem
+Input: Analyze the given data structure
+Output: Define what we need to return
+Explanation: First, clearly identify the inputs and expected output format.
+
+STEP 2: Choose Data Structure
+Consider: Arrays, Hash Maps, Sets, etc.
+Explanation: Select the most efficient data structure for this problem type.
+
+STEP 3: Design Algorithm
+Approach: {question.get('category', 'Iterative/Recursive')}
+Explanation: Break down the problem into smaller subproblems.
+
+STEP 4: Implement Solution
+Code the algorithm step by step
+Explanation: Translate your logic into working code.
+
+STEP 5: Test & Optimize
+Run test cases and analyze complexity
+Explanation: Verify correctness and optimize for better performance."""
+            
+            return jsonify({
+                'visualization': visualization,
+                'title': f"Algorithm Visualization: {title}",
+                'available': True
+            })
+            
+        except Exception as llm_error:
+            print(f"LLM error during visualization: {llm_error}")
+            # Return structured fallback
+            return jsonify({
+                'visualization': f"""STEP 1: Input Analysis
+Examine the input data structure
+Explanation: Understand what data you're working with.
+
+STEP 2: Algorithm Pattern
+Identify the pattern: {question.get('category', 'Problem Solving')}
+Explanation: Recognize which algorithmic approach fits best.
+
+STEP 3: Step-by-Step Execution
+Walk through the algorithm with a sample input
+Explanation: Trace through your logic manually first.
+
+STEP 4: Edge Cases
+Consider empty input, single element, duplicates
+Explanation: Ensure your solution handles all cases.
+
+STEP 5: Complexity Analysis
+Time: O(?) | Space: O(?)
+Explanation: Analyze the efficiency of your solution.""",
+                'title': f"Algorithm Visualization: {title}",
+                'available': True,
+                'fallback': True
+            })
+            
+    except Exception as e:
+        print(f"Error generating visualization: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'visualization': None,
+            'error': str(e),
+            'available': False
+        }), 500
+
 if __name__ == '__main__':
     # Initialize questions if they don't exist
     if not os.path.exists(QUESTIONS_FILE):
