@@ -40,9 +40,11 @@ server.log
 *.temp
 *.bak
 
-# Model files (too large for git)
-models/
-*.gguf
+# Model files (tracked via Git LFS)
+# models/ directory is now tracked
+# *.gguf files use Git LFS
+
+# Other large model files (not used currently)
 *.bin
 *.pt
 *.pth
