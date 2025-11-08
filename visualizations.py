@@ -13,26 +13,33 @@ def get_visualization(problem_id, question):
     visualizations = {
         # ========== ARRAY / TWO POINTERS ==========
         'two_sum': lambda: f"""STEP 1: Initialize Hash Map
-nums = {example_input}, target = 9
-      ↑
-seen = {{}}
+nums = [2, 7, 11, 15], target = 9
+      ↑i=0
+seen = {{}}  (empty hash map)
 
-STEP 2: Check First Element
-nums = {example_input}
-      ↑
-seen[nums[0]] = 0
-complement = 9 - nums[0]
+STEP 2: Check First Number (2)
+nums = [2, 7, 11, 15]
+      ↑i=0
+complement = 9 - 2 = 7
+Is 7 in seen? NO
+seen = {{2: 0}}  (store value → index)
 
-STEP 3: Find Complement
-nums = {example_input}
-         ↑
-if complement in seen:
-   return [seen[complement], i]
+STEP 3: Check Second Number (7)
+nums = [2, 7, 11, 15]
+         ↑i=1
+complement = 9 - 7 = 2
+Is 2 in seen? YES! ✓
+seen[2] = 0 (found at index 0)
 
-STEP 4: Result Found
-nums = {example_input}
-      ✓    ✓
-indices = {example_output}
+STEP 4: Return Result
+nums = [2, 7, 11, 15]
+      ✓0   ✓1
+Pair found: [0, 1]
+Calculation: nums[0] + nums[1] = 2 + 7 = 9 ✓
+
+STEP 5: Time Complexity
+O(n) - single pass through array
+O(n) space - hash map storage
 """,
 
         'two_sum_ii_sorted': lambda: f"""STEP 1: Initialize Two Pointers
@@ -54,28 +61,40 @@ nums = {example_input}
 Result = {example_output}
 """,
 
-        '3sum': lambda: f"""STEP 1: Sort Array
-Original: {example_input}
+        '3sum': lambda: f"""STEP 1: Sort Array First
+Original: [-1, 0, 1, 2, -1, -4]
 Sorted:   [-4, -1, -1, 0, 1, 2]
-          ↑
+          ↑i=0
 
-STEP 2: Fix First, Two Pointers
-nums = [-4, -1, -1, 0, 1, 2]
-        ↑i   L            R
-Fix i, search L and R
+STEP 2: Fix i=0, Search with Two Pointers
+nums = [-4, -1, -1,  0,  1,  2]
+        ↑i   ↑L              ↑R
+i=0 (val=-4), L=1 (val=-1), R=5 (val=2)
+sum = -4 + (-1) + 2 = -3 (too small)
+Action: L++ (move left pointer right →)
 
-STEP 3: Find Triplets
-nums = [-4, -1, -1, 0, 1, 2]
-            ↑i  L      R
-sum = -1 + (-1) + 2 = 0 ✓
+STEP 3: Continue Search (i=0)
+nums = [-4, -1, -1,  0,  1,  2]
+        ↑i       ↑L          ↑R
+sum = -4 + (-1) + 2 = -3 (still too small)
+Action: L++ →
 
-STEP 4: Skip Duplicates
-nums = [-4, -1, -1, 0, 1, 2]
-            ↑i      L  R
-Move pointers, skip same values
+STEP 4: Move to i=1, Find Match!
+nums = [-4, -1, -1,  0,  1,  2]
+            ↑i   ↑L          ↑R
+i=1 (val=-1), L=2 (val=-1), R=5 (val=2)
+sum = -1 + (-1) + 2 = 0 ✓ FOUND!
+triplet = [-1, -1, 2]
 
-STEP 5: Result
-triplets = {example_output}
+STEP 5: Continue & Skip Duplicates
+nums = [-4, -1, -1,  0,  1,  2]
+            ↑i       ↑L      ↑R
+Skip duplicate -1, move L and R
+Find more: [-1, 0, 1]
+
+STEP 6: All Triplets Found
+Result = [[-1, -1, 2], [-1, 0, 1]]
+Time: O(n²), Space: O(1)
 """,
 
         'container_with_most_water': lambda: f"""STEP 1: Two Pointers
@@ -260,23 +279,36 @@ isValid = {example_output}
 
         # ========== STACK ==========
         'valid_parentheses': lambda: f"""STEP 1: Initialize Stack
-s = {example_input}
-    ↑
-stack = []
+s = "([)]"
+    ↑i=0
+stack = []  (empty)
 
-STEP 2: Opening Bracket
-s = "( ) [ ] {{ }}"
-    ↑
-stack.push('(')
+STEP 2: Process '(' (opening)
+s = "([)]"
+    ↑i=0
+'(' is opening → push
+stack = ['(']
 
-STEP 3: Closing Bracket
-s = "( ) [ ] {{ }}"
-      ↑
-if matches(stack.top(), ')'):
-   stack.pop()
+STEP 3: Process '[' (opening)
+s = "([)]"
+      ↑i=1
+'[' is opening → push
+stack = ['(', '[']
 
-STEP 4: Valid?
-stack empty = {example_output}
+STEP 4: Process ')' (closing)
+s = "([)]"
+        ↑i=2
+')' should match stack.top() = '['
+'(' ≠ '[' → MISMATCH! ✗
+
+STEP 5: Valid Example
+"([])" works:
+[] → ['('] → ['(','['] → ['('] → []
+All matched! ✓
+
+STEP 6: Rules
+Opening: push, Closing: pop & match
+Time: O(n), Space: O(n)
 """,
 
         'min_stack': lambda: f"""STEP 1: Two Stacks
@@ -335,24 +367,34 @@ days = {example_output}
 """,
 
         # ========== BINARY SEARCH ==========
-        'binary_search': lambda: f"""STEP 1: Initialize Pointers
-nums = {example_input}, target = 9
-       ↑L       M          R↑
-left = 0, right = len-1
+        'binary_search': lambda: f"""STEP 1: Initialize Search Space
+nums = [-1, 0, 3, 5, 9, 12], target = 9
+       ↑L              ↑M              ↑R
+left = 0, right = 5, mid = (0+5)//2 = 2
 
-STEP 2: Find Middle
-mid = (left + right) // 2
-if nums[mid] == target:
-   return mid
+STEP 2: First Check (mid=2)
+nums = [-1, 0, 3, 5, 9, 12]
+       ↑L      ↑M          ↑R
+nums[2] = 3
+Is 3 == 9? NO
+Is 3 < 9? YES → search right half
+left = mid + 1 = 3
 
-STEP 3: Adjust Search
-if nums[mid] < target:
-   left = mid + 1 →
-else:
-   right = mid - 1 ←
+STEP 3: Second Check (mid=4)
+nums = [-1, 0, 3, 5, 9, 12]
+                   ↑L ↑M  ↑R
+mid = (3+5)//2 = 4
+nums[4] = 9
+Is 9 == 9? YES! ✓ FOUND!
 
-STEP 4: Found/Not Found
-result = {example_output}
+STEP 4: Return Index
+nums = [-1, 0, 3, 5, 9, 12]
+                      ✓4
+Target 9 found at index 4
+
+STEP 5: Complexity
+Time: O(log n) - halve search space each step
+Space: O(1) - only use pointers
 """,
 
         'find_min_rotated_sorted_array': lambda: f"""STEP 1: Binary Search
@@ -561,19 +603,32 @@ minWindow = {example_output}
 """,
 
         # ========== DYNAMIC PROGRAMMING ==========
-        'climbing_stairs': lambda: f"""STEP 1: Bottom-Up DP
-n = {example_input}
-dp = [0] * (n+1)
+        'climbing_stairs': lambda: f"""STEP 1: Bottom-Up DP Setup
+n = 5 (want to reach stair 5)
+dp[i] = ways to reach stair i
+dp = [0, 0, 0, 0, 0, 0]
 
 STEP 2: Base Cases
-dp[0] = 1
-dp[1] = 1
+dp[0] = 1 (one way: stay at ground)
+dp[1] = 1 (one way: one step)
+dp = [1, 1, 0, 0, 0, 0]
 
-STEP 3: Fill Table
-dp[i] = dp[i-1] + dp[i-2]
+STEP 3: Fill DP Table
+For stair 2:
+  dp[2] = dp[1] + dp[0] = 1 + 1 = 2
+  (can come from stair 1 or stair 0)
+dp = [1, 1, 2, 0, 0, 0]
 
-STEP 4: Result
-dp[n] = {example_output}
+STEP 4: Continue Building
+dp[3] = dp[2] + dp[1] = 2 + 1 = 3
+dp[4] = dp[3] + dp[2] = 3 + 2 = 5
+dp[5] = dp[4] + dp[3] = 5 + 3 = 8
+dp = [1, 1, 2, 3, 5, 8]
+
+STEP 5: Final Answer
+dp[5] = 8 ways to reach stair 5
+Pattern: Fibonacci sequence!
+Time: O(n), Space: O(n)
 """,
 
         'house_robber': lambda: f"""STEP 1: DP Array
