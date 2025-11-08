@@ -721,9 +721,247 @@ def get_solution():
             'error': str(e)
         }), 500
 
+def generate_visual_diagram(question):
+    """Generate visual diagram programmatically based on problem pattern."""
+    problem_id = question.get('id', '')
+    title = question.get('title', '')
+    category = question.get('category', '').lower()
+    examples = question.get('examples', [])
+    
+    # Get first example
+    example_input = examples[0].get('input', 'N/A') if examples else 'N/A'
+    example_output = examples[0].get('output', 'N/A') if examples else 'N/A'
+    
+    # Pattern-based visual generators
+    if 'two-sum' in problem_id or 'two_sum' in problem_id:
+        return f"""STEP 1: Initialize
+nums = {example_input}, target = 9
+      ↑
+      i=0
+seen = {{}}
+
+STEP 2: Check First Element
+nums = {example_input}
+      ↑
+seen[nums[0]] = 0
+Need: 9 - nums[0]
+
+STEP 3: Find Complement
+nums = {example_input}
+         ↑
+      complement = 9 - nums[1]
+      if complement in seen:
+         return [seen[complement], 1]
+
+STEP 4: Result Found
+nums = {example_input}
+      ✓    ✓
+indices = {example_output}
+"""
+    
+    elif 'best-time' in problem_id or 'stock' in title.lower():
+        return f"""STEP 1: Day 1
+prices = {example_input}
+         ↑
+minPrice = prices[0]
+maxProfit = 0
+
+STEP 2: Day 2
+prices = {example_input}
+            ↑
+profit = prices[1] - minPrice
+if prices[1] < minPrice:
+   minPrice = prices[1]
+
+STEP 3: Day 3
+prices = {example_input}
+               ↑
+profit = prices[2] - minPrice = {example_input}[2] - min
+maxProfit = max(maxProfit, profit)
+
+STEP 4: Continue Scanning
+prices = {example_input}
+                  ↑     ↑
+Track minPrice and maxProfit throughout
+
+STEP 5: Final Result
+maxProfit = {example_output}
+"""
+    
+    elif 'add-two-numbers' in problem_id or 'linked' in category:
+        return f"""STEP 1: Initialize
+l1: 2 → 4 → 3
+l2: 5 → 6 → 4
+    ↓
+result: dummy → 
+
+STEP 2: Add First Nodes
+l1: [2] → 4 → 3
+l2: [5] → 6 → 4
+sum = 2 + 5 = 7, carry = 0
+result: dummy → 7 →
+
+STEP 3: Add Second Nodes
+l1: 2 → [4] → 3
+l2: 5 → [6] → 4
+sum = 4 + 6 = 10, carry = 1
+result: dummy → 7 → 0 →
+
+STEP 4: Add Third Nodes
+l1: 2 → 4 → [3]
+l2: 5 → 6 → [4]
+sum = 3 + 4 + carry(1) = 8, carry = 0
+result: dummy → 7 → 0 → 8
+
+STEP 5: Return
+result: 7 → 0 → 8 →  None
+Output = {example_output}
+"""
+    
+    elif '3sum' in problem_id or 'three sum' in title.lower():
+        return f"""STEP 1: Sort Array
+Original: {example_input}
+Sorted:   [-4, -1, -1, 0, 1, 2]
+          ↑
+
+STEP 2: Fix First Element
+nums = [-4, -1, -1, 0, 1, 2]
+        ↑    L            R
+i = 0, left = 1, right = 5
+
+STEP 3: Two Pointer Search
+nums = [-4, -1, -1, 0, 1, 2]
+        ↑    L         R
+sum = -4 + (-1) + 2 = -3 (< 0)
+Move left →
+
+STEP 4: Find Triplet
+nums = [-4, -1, -1, 0, 1, 2]
+            ↑   L      R
+sum = -1 + (-1) + 2 = 0 ✓
+Found: [-1, -1, 2]
+
+STEP 5: Continue
+nums = [-4, -1, -1, 0, 1, 2]
+            ↑       L  R
+Find all unique triplets
+Result = {example_output}
+"""
+    
+    elif 'container' in problem_id or 'water' in title.lower():
+        return f"""STEP 1: Initialize Two Pointers
+height = {example_input}
+         ↑L                   R↑
+left = 0, right = len-1
+
+STEP 2: Calculate Area
+height = {example_input}
+         ↑L                   R↑
+width = right - left
+h = min(height[L], height[R])
+area = width × h
+
+STEP 3: Move Shorter Pointer
+height = {example_input}
+         ↑L                   R↑
+if height[L] < height[R]:
+   left++ →
+maxArea = max(maxArea, area)
+
+STEP 4: Continue Narrowing
+height = {example_input}
+            ↑L            R↑
+Calculate new area
+Move shorter pointer
+
+STEP 5: Result
+maxArea = {example_output}
+"""
+    
+    elif 'valid' in problem_id and 'parenthes' in problem_id:
+        return f"""STEP 1: Initialize Stack
+s = {example_input}
+    ↑
+stack = []
+
+STEP 2: Process Opening
+s = "( ) [ ] {{ }}"
+    ↑
+stack.push('(')
+stack = ['(']
+
+STEP 3: Match Closing
+s = "( ) [ ] {{ }}"
+      ↑
+closing ')' matches stack.top() '('
+stack.pop() → stack = []
+
+STEP 4: Continue
+s = "( ) [ ] {{ }}"
+          ↑
+stack = ['[']
+Process each bracket
+
+STEP 5: Valid if Empty
+stack = []
+Result = {example_output}
+"""
+    
+    elif 'binary' in problem_id and 'search' in problem_id:
+        return f"""STEP 1: Initialize Pointers
+nums = {example_input}, target = 9
+       ↑L            M              R↑
+left = 0, right = len-1
+
+STEP 2: Find Middle
+nums = {example_input}
+       ↑L            ↑M             R↑
+mid = (left + right) // 2
+if nums[mid] == target: return mid
+
+STEP 3: Adjust Search Space
+nums = {example_input}
+                     ↑M             R↑
+if nums[mid] < target:
+   left = mid + 1 →
+
+STEP 4: Narrow Down
+nums = {example_input}
+                     ↑L ↑M    R↑
+mid = (left + right) // 2
+Continue search
+
+STEP 5: Found or Not Found
+Result = {example_output}
+"""
+    
+    # Generic fallback
+    else:
+        return f"""STEP 1: Input
+data = {example_input}
+       ↑
+Start processing
+
+STEP 2: Initialize Variables
+Set up data structures
+Track current state
+
+STEP 3: Main Loop
+Iterate through input
+   ↓
+Process each element
+
+STEP 4: Update State
+Check conditions
+Update result
+
+STEP 5: Output
+Final result = {example_output}
+"""
+
 @app.route('/api/visualize', methods=['POST'])
 def visualize_algorithm():
-    """Generate step-by-step visual diagram for the algorithm using LLM."""
+    """Generate step-by-step visual diagram programmatically."""
     try:
         data = request.get_json() if request.is_json else {}
         question = data.get('question', {})
@@ -736,154 +974,15 @@ def visualize_algorithm():
             }), 400
         
         title = question.get('title', 'Unknown Problem')
-        description = question.get('description', '')
         
-        # Load LLM if not already loaded
-        if not rag_system.llm and not rag_system.llm_loading_attempted:
-            rag_system.load_llm()
+        # Generate visualization programmatically (no LLM needed)
+        visualization = generate_visual_diagram(question)
         
-        if not rag_system.llm:
-            return jsonify({
-                'visualization': None,
-                'error': 'LLM not available',
-                'fallback': 'Unable to generate visualization. Please check LLM configuration.'
-            }), 500
-        
-        # Create prompt for visualization with concrete example
-        # Get first example for context
-        examples = question.get('examples', [])
-        example_input = examples[0].get('input', 'N/A') if examples else 'sample data'
-        
-        prompt = f"""Create a VISUAL step-by-step diagram for: {title}
-
-RULES:
-- Use ASCII art and diagrams (arrows, pointers, brackets)
-- Show array states with actual values
-- Keep text minimal (1 sentence per step)
-- NO long explanations
-
-EXAMPLE YOU MUST FOLLOW:
-
-STEP 1: Start
-prices = [7, 1, 5, 3, 6, 4]
-         ↑
-      minPrice=7, maxProfit=0
-
-STEP 2: Day 2
-prices = [7, 1, 5, 3, 6, 4]
-            ↑
-      minPrice=1, maxProfit=0
-
-STEP 3: Day 3
-prices = [7, 1, 5, 3, 6, 4]
-               ↑
-      profit = 5-1 = 4
-      maxProfit=4
-
-Your turn for: {title}
-Input example: {example_input}
-
-Generate 5 steps with VISUAL diagrams and arrows. Be concise:"""
-
-        try:
-            response = rag_system.llm(
-                prompt,
-                max_tokens=800,  # Reduced to force brevity
-                temperature=0.5,  # Lower for more consistent format following
-                top_k=30,
-                top_p=0.85,
-                repeat_penalty=1.2,
-                stop=["Problem:", "Note:", "###", "RULES:", "Your turn"],
-                echo=False
-            )
-            
-            visualization = response['choices'][0]['text'].strip()
-            
-            # Post-process: ensure it's not empty or generic
-            if len(visualization) < 50 or "I cannot" in visualization or "I apologize" in visualization or "[Visual Diagram]" in visualization:
-                # Create visual fallback based on category
-                category = question.get('category', '').lower()
-                examples = question.get('examples', [])
-                example_input = examples[0].get('input', '[1,2,3]') if examples else '[1,2,3]'
-                
-                if 'array' in category or 'two pointer' in category:
-                    visualization = f"""STEP 1: Initialize
-arr = {example_input}
-      ↑
-      i=0
-
-STEP 2: Iterate Forward
-arr = {example_input}
-         ↑
-      i=1, process current element
-
-STEP 3: Track State
-result = []
-current = arr[i]
-Update result based on condition
-
-STEP 4: Continue
-arr = {example_input}
-            ↑
-      i=2, check next element
-
-STEP 5: Return Result
-Final result after processing all elements"""
-                else:
-                    visualization = f"""STEP 1: Setup
-input = {example_input}
-Initialize variables
-
-STEP 2: Process
-→ Apply algorithm logic
-→ Track intermediate results
-
-STEP 3: Iterate
-Loop through data structure
-Update state at each step
-
-STEP 4: Check Conditions
-if (condition):
-    ✓ Update result
-else:
-    → Continue
-
-STEP 5: Return
-Final answer after all iterations"""
-            
-            return jsonify({
-                'visualization': visualization,
-                'title': f"Algorithm Visualization: {title}",
-                'available': True
-            })
-            
-        except Exception as llm_error:
-            print(f"LLM error during visualization: {llm_error}")
-            # Return structured fallback
-            return jsonify({
-                'visualization': f"""STEP 1: Input Analysis
-Examine the input data structure
-Explanation: Understand what data you're working with.
-
-STEP 2: Algorithm Pattern
-Identify the pattern: {question.get('category', 'Problem Solving')}
-Explanation: Recognize which algorithmic approach fits best.
-
-STEP 3: Step-by-Step Execution
-Walk through the algorithm with a sample input
-Explanation: Trace through your logic manually first.
-
-STEP 4: Edge Cases
-Consider empty input, single element, duplicates
-Explanation: Ensure your solution handles all cases.
-
-STEP 5: Complexity Analysis
-Time: O(?) | Space: O(?)
-Explanation: Analyze the efficiency of your solution.""",
-                'title': f"Algorithm Visualization: {title}",
-                'available': True,
-                'fallback': True
-            })
+        return jsonify({
+            'visualization': visualization,
+            'title': f"📊 Algorithm Visualization: {title}",
+            'available': True
+        })
             
     except Exception as e:
         print(f"Error generating visualization: {e}")
