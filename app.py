@@ -18,12 +18,9 @@ from visualizations import get_visualization
 # Add path for LLM integration
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../cortex-sdk/Chat_bot')))
 
-# Import code analyzer
-from code_analyzer import CodeAnalyzer
 from rag_hint_system import rag_system
 
 app = Flask(__name__)
-code_analyzer = CodeAnalyzer()
 
 # Initialize LLM for hints (lazy loading)
 hint_llm = None
@@ -500,10 +497,6 @@ def _build_hint_prompt(question: Dict, user_code: str, hint_type: str) -> str:
     category = question.get('category', '')
     difficulty = question.get('difficulty', '')
     
-    # Analyze the user's code
-    code_analysis = code_analyzer.analyze_code(user_code, category)
-    code_summary = code_analyzer.get_code_summary(code_analysis)
-    
     prompt = f"""You are a helpful coding tutor helping a student learn LeetCode problems.
 
 Problem: {title}
@@ -521,8 +514,6 @@ Description: {description}
                 prompt += f"  Explanation: {ex.get('explanation')}\n"
     
     prompt += f"\nStudent's current code:\n```python\n{user_code}\n```\n\n"
-    
-    prompt += f"Code Analysis:\n{code_summary}\n\n"
     
     # Add context-specific guidance based on hint type
     if hint_type == 'general':
