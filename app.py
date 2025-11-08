@@ -750,39 +750,50 @@ def visualize_algorithm():
             }), 500
         
         # Create prompt for visualization with concrete example
-        prompt = f"""You are a coding tutor. Create a visual step-by-step walkthrough for: {title}
+        # Get first example for context
+        examples = question.get('examples', [])
+        example_input = examples[0].get('input', 'N/A') if examples else 'sample data'
+        
+        prompt = f"""Create a VISUAL step-by-step diagram for: {title}
 
-Show the algorithm execution with ACTUAL values and diagrams. Do NOT use placeholders.
+RULES:
+- Use ASCII art and diagrams (arrows, pointers, brackets)
+- Show array states with actual values
+- Keep text minimal (1 sentence per step)
+- NO long explanations
 
-Example format (you must follow this):
+EXAMPLE YOU MUST FOLLOW:
 
-STEP 1: Initialize Variables
-left = 0, right = len(nums)-1
-nums = [2, 7, 11, 15], target = 9
-      ↑left         ↑right
-Explanation: Set two pointers at start and end of sorted array.
+STEP 1: Start
+prices = [7, 1, 5, 3, 6, 4]
+         ↑
+      minPrice=7, maxProfit=0
 
-STEP 2: Check Sum
-nums[left] + nums[right] = 2 + 15 = 17
-17 > 9 (too large)
-Action: Move right pointer left
-Explanation: Sum is greater than target, so decrease by moving right pointer.
+STEP 2: Day 2
+prices = [7, 1, 5, 3, 6, 4]
+            ↑
+      minPrice=1, maxProfit=0
 
-Now create a similar visualization for: {title}
+STEP 3: Day 3
+prices = [7, 1, 5, 3, 6, 4]
+               ↑
+      profit = 5-1 = 4
+      maxProfit=4
 
-Problem: {description[:300]}
+Your turn for: {title}
+Input example: {example_input}
 
-Generate 5-6 concrete steps with REAL example values, actual array visualizations, and specific calculations. Start now:"""
+Generate 5 steps with VISUAL diagrams and arrows. Be concise:"""
 
         try:
             response = rag_system.llm(
                 prompt,
-                max_tokens=1200,
-                temperature=0.7,
-                top_k=40,
-                top_p=0.9,
-                repeat_penalty=1.1,
-                stop=["Problem:", "Note:", "###", "Example format"],
+                max_tokens=800,  # Reduced to force brevity
+                temperature=0.5,  # Lower for more consistent format following
+                top_k=30,
+                top_p=0.85,
+                repeat_penalty=1.2,
+                stop=["Problem:", "Note:", "###", "RULES:", "Your turn"],
                 echo=False
             )
             
@@ -790,38 +801,55 @@ Generate 5-6 concrete steps with REAL example values, actual array visualization
             
             # Post-process: ensure it's not empty or generic
             if len(visualization) < 50 or "I cannot" in visualization or "I apologize" in visualization or "[Visual Diagram]" in visualization:
-                # Get example from question if available
+                # Create visual fallback based on category
+                category = question.get('category', '').lower()
                 examples = question.get('examples', [])
-                example_text = ""
-                if examples and len(examples) > 0:
-                    ex = examples[0]
-                    example_text = f"Example: Input = {ex.get('input', 'N/A')}, Output = {ex.get('output', 'N/A')}"
+                example_input = examples[0].get('input', '[1,2,3]') if examples else '[1,2,3]'
                 
-                # Fallback to structured format with example
-                visualization = f"""STEP 1: Understand the Problem
-{example_text}
-Category: {question.get('category', 'Algorithm')}
-Explanation: Identify the inputs, outputs, and constraints.
+                if 'array' in category or 'two pointer' in category:
+                    visualization = f"""STEP 1: Initialize
+arr = {example_input}
+      ↑
+      i=0
 
-STEP 2: Choose Approach
-Pattern: {question.get('category', 'Iterative approach')}
-Data structures: Consider arrays, hash maps, sets, two pointers, etc.
-Explanation: Select the most efficient data structure and algorithm pattern.
+STEP 2: Iterate Forward
+arr = {example_input}
+         ↑
+      i=1, process current element
 
-STEP 3: Walk Through Example
-Take a sample input and manually trace through the solution
-Show how data transforms at each step
-Explanation: Visualize the algorithm flow with concrete values.
+STEP 3: Track State
+result = []
+current = arr[i]
+Update result based on condition
 
-STEP 4: Handle Edge Cases
-Empty input, single element, duplicates, negative numbers
-Ensure your solution covers all scenarios
-Explanation: Test boundary conditions.
+STEP 4: Continue
+arr = {example_input}
+            ↑
+      i=2, check next element
 
-STEP 5: Analyze Complexity
-Time: Calculate operations per input size
-Space: Track additional memory usage
-Explanation: Optimize for better performance if needed."""
+STEP 5: Return Result
+Final result after processing all elements"""
+                else:
+                    visualization = f"""STEP 1: Setup
+input = {example_input}
+Initialize variables
+
+STEP 2: Process
+→ Apply algorithm logic
+→ Track intermediate results
+
+STEP 3: Iterate
+Loop through data structure
+Update state at each step
+
+STEP 4: Check Conditions
+if (condition):
+    ✓ Update result
+else:
+    → Continue
+
+STEP 5: Return
+Final answer after all iterations"""
             
             return jsonify({
                 'visualization': visualization,
