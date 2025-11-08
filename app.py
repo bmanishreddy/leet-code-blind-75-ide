@@ -749,71 +749,79 @@ def visualize_algorithm():
                 'fallback': 'Unable to generate visualization. Please check LLM configuration.'
             }), 500
         
-        # Create prompt for visualization
-        prompt = f"""Generate a step-by-step visual diagram for solving this algorithm problem.
+        # Create prompt for visualization with concrete example
+        prompt = f"""You are a coding tutor. Create a visual step-by-step walkthrough for: {title}
 
-Problem: {title}
-Description: {description[:200]}...
+Show the algorithm execution with ACTUAL values and diagrams. Do NOT use placeholders.
 
-Instructions:
-1. Break down the algorithm into 5-7 clear steps
-2. For each step, provide:
-   - Step number and title
-   - Visual representation using ASCII art or structured text
-   - Brief explanation (1-2 sentences)
-3. Use diagrams like:
-   - Arrays: [1, 2, 3, 4, 5]
-   - Pointers: left→  ←right
-   - Trees: Use indentation or ASCII
-   - Hash maps: {{key: value}}
-4. Show state changes between steps
-5. Keep it simple and educational
+Example format (you must follow this):
 
-Format your response as:
-STEP 1: [Title]
-[Visual diagram]
-Explanation: [Brief explanation]
+STEP 1: Initialize Variables
+left = 0, right = len(nums)-1
+nums = [2, 7, 11, 15], target = 9
+      ↑left         ↑right
+Explanation: Set two pointers at start and end of sorted array.
 
-STEP 2: [Title]
-...
+STEP 2: Check Sum
+nums[left] + nums[right] = 2 + 15 = 17
+17 > 9 (too large)
+Action: Move right pointer left
+Explanation: Sum is greater than target, so decrease by moving right pointer.
 
-Generate the visualization now:"""
+Now create a similar visualization for: {title}
+
+Problem: {description[:300]}
+
+Generate 5-6 concrete steps with REAL example values, actual array visualizations, and specific calculations. Start now:"""
 
         try:
             response = rag_system.llm(
                 prompt,
-                max_tokens=800,
-                temperature=0.6,
+                max_tokens=1200,
+                temperature=0.7,
                 top_k=40,
-                stop=["Problem:", "Note:", "###"],
+                top_p=0.9,
+                repeat_penalty=1.1,
+                stop=["Problem:", "Note:", "###", "Example format"],
                 echo=False
             )
             
             visualization = response['choices'][0]['text'].strip()
             
             # Post-process: ensure it's not empty or generic
-            if len(visualization) < 50 or "I cannot" in visualization or "I apologize" in visualization:
-                # Fallback to structured format
+            if len(visualization) < 50 or "I cannot" in visualization or "I apologize" in visualization or "[Visual Diagram]" in visualization:
+                # Get example from question if available
+                examples = question.get('examples', [])
+                example_text = ""
+                if examples and len(examples) > 0:
+                    ex = examples[0]
+                    example_text = f"Example: Input = {ex.get('input', 'N/A')}, Output = {ex.get('output', 'N/A')}"
+                
+                # Fallback to structured format with example
                 visualization = f"""STEP 1: Understand the Problem
-Input: Analyze the given data structure
-Output: Define what we need to return
-Explanation: First, clearly identify the inputs and expected output format.
+{example_text}
+Category: {question.get('category', 'Algorithm')}
+Explanation: Identify the inputs, outputs, and constraints.
 
-STEP 2: Choose Data Structure
-Consider: Arrays, Hash Maps, Sets, etc.
-Explanation: Select the most efficient data structure for this problem type.
+STEP 2: Choose Approach
+Pattern: {question.get('category', 'Iterative approach')}
+Data structures: Consider arrays, hash maps, sets, two pointers, etc.
+Explanation: Select the most efficient data structure and algorithm pattern.
 
-STEP 3: Design Algorithm
-Approach: {question.get('category', 'Iterative/Recursive')}
-Explanation: Break down the problem into smaller subproblems.
+STEP 3: Walk Through Example
+Take a sample input and manually trace through the solution
+Show how data transforms at each step
+Explanation: Visualize the algorithm flow with concrete values.
 
-STEP 4: Implement Solution
-Code the algorithm step by step
-Explanation: Translate your logic into working code.
+STEP 4: Handle Edge Cases
+Empty input, single element, duplicates, negative numbers
+Ensure your solution covers all scenarios
+Explanation: Test boundary conditions.
 
-STEP 5: Test & Optimize
-Run test cases and analyze complexity
-Explanation: Verify correctness and optimize for better performance."""
+STEP 5: Analyze Complexity
+Time: Calculate operations per input size
+Space: Track additional memory usage
+Explanation: Optimize for better performance if needed."""
             
             return jsonify({
                 'visualization': visualization,
