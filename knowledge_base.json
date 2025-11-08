@@ -1,0 +1,884 @@
+{
+  "two-sum": {
+    "approach": "Hash Map",
+    "explanation": "Find two numbers in an array that add up to a target value.\n\n**Algorithm Steps:**\n1. Use a hash map (dictionary) to store each number and its index as we iterate\n2. For each number, calculate its complement: target - current_number\n3. Check if the complement exists in the hash map\n4. If found, return the indices of both numbers\n5. Otherwise, add the current number to the hash map and continue\n\n**Key Insight:** Trading space for time - using a hash map gives O(1) lookup instead of O(n) linear search, reducing overall complexity from O(n\u00b2) to O(n).",
+    "pattern": "Hash Table, Array",
+    "time_complexity": "O(n)",
+    "space_complexity": "O(n)",
+    "key_insight": "Trading space for time - hash map gives O(1) lookup",
+    "common_mistakes": [
+      "Using nested loops (O(n\u00b2))",
+      "Not handling duplicates"
+    ],
+    "hint_sequence": [
+      "Think about how to check if a complement exists efficiently",
+      "Use a dictionary to store value -> index mapping",
+      "As you iterate, check if (target - current_number) is in your dictionary"
+    ],
+    "code_template": "\ndef twoSum(self, nums, target):\n    seen = {}  # value -> index\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return []\n"
+  },
+  "best-time-to-buy-and-sell-stock": {
+    "approach": "One Pass",
+    "explanation": "Find the maximum profit from buying and selling a stock once.\n\n**Algorithm Steps:**\n1. Track the minimum price seen so far\n2. For each price, calculate the profit if we sold today (price - min_price)\n3. Update the maximum profit if current profit is greater\n4. Update minimum price if current price is lower\n\n**Key Insight:** We only need to track one minimum price and compare it with each subsequent price. This is a greedy approach that finds the optimal solution in a single pass.",
+    "pattern": "Array, Dynamic Programming",
+    "time_complexity": "O(n)",
+    "key_insight": "You want to buy at the lowest price before selling at a higher price",
+    "hint_sequence": [
+      "Keep track of the minimum price you've seen",
+      "For each price, calculate profit if you sold today",
+      "Update maximum profit as you go"
+    ],
+    "code_template": "def maxProfit(self, prices):\n    if not prices:\n        return 0\n    \n    min_price = prices[0]\n    max_profit = 0\n    \n    for price in prices:\n        if price < min_price:\n            min_price = price\n        else:\n            profit = price - min_price\n            if profit > max_profit:\n                max_profit = profit\n    \n    return max_profit"
+  },
+  "contains-duplicate": {
+    "approach": "Hash Set",
+    "explanation": "Check if an array contains any duplicate elements.\n\n**Algorithm Steps:**\n1. Use a set to track numbers we've seen\n2. Iterate through the array\n3. For each number, check if it's already in the set\n4. If yes, return True (duplicate found)\n5. Otherwise, add it to the set and continue\n6. If we finish iteration, return False (no duplicates)\n\n**Key Insight:** Sets provide O(1) average-case lookup, making this an efficient O(n) solution compared to O(n\u00b2) nested loops.",
+    "pattern": "Hash Table, Array",
+    "time_complexity": "O(n)",
+    "key_insight": "Set provides O(1) lookup for checking duplicates",
+    "hint_sequence": [
+      "How can you remember what numbers you've already seen?",
+      "Use a set to store numbers as you iterate",
+      "Check if number is already in set before adding"
+    ],
+    "code_template": "def containsDuplicate(self, nums):\n    seen = set()\n    for num in nums:\n        if num in seen:\n            return True\n        seen.add(num)\n    return False"
+  },
+  "product-of-array-except-self": {
+    "approach": "Problem Solving",
+    "explanation": "Return an array where each element is the product of all other elements.\n\n**Algorithm Steps:**\n1. First pass: Calculate left products (product of all elements to the left)\n2. Second pass: Calculate right products and multiply with left products\n3. This gives product of all elements except self\n\n**Key Insight:** We can't use division, so we use two passes. The left pass builds products from left to right, the right pass multiplies from right to left, giving us the product of all except the current element.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def productExceptSelf(self, nums):\n    n = len(nums)\n    result = [1] * n\n    \n    # Calculate left products\n    left = 1\n    for i in range(n):\n        result[i] = left\n        left *= nums[i]\n    \n    # Calculate right products and multiply\n    right = 1\n    for i in range(n - 1, -1, -1):\n        result[i] *= right\n        right *= nums[i]\n    \n    return result"
+  },
+  "maximum-subarray": {
+    "approach": "Kadane's Algorithm",
+    "explanation": "Find the contiguous subarray with the largest sum (Kadane's Algorithm).\n\n**Algorithm Steps:**\n1. Initialize current_sum and max_sum to the first element\n2. For each subsequent element:\n   - If current_sum is negative, starting fresh is better (reset to current element)\n   - Otherwise, add current element to current_sum\n   - Update max_sum if current_sum is greater\n3. Return max_sum\n\n**Key Insight:** If the current sum becomes negative, it won't help future sums, so we reset. This is the core of Kadane's algorithm - a classic dynamic programming approach.",
+    "pattern": "Dynamic Programming, Array",
+    "time_complexity": "O(n)",
+    "key_insight": "If current sum is negative, starting fresh is better",
+    "hint_sequence": [
+      "Should you keep adding to your current sum or start fresh?",
+      "If current sum becomes negative, it won't help future sums",
+      "Track the maximum sum you've seen so far"
+    ],
+    "code_template": "def maxSubArray(self, nums):\n    if not nums:\n        return 0\n    \n    current_sum = max_sum = nums[0]\n    \n    for num in nums[1:]:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    \n    return max_sum"
+  },
+  "maximum-product-subarray": {
+    "approach": "Problem Solving",
+    "explanation": "Find the contiguous subarray with the largest product.\n\n**Algorithm Steps:**\n1. Track both maximum and minimum product (negative * negative = positive!)\n2. For each number:\n   - If number is negative, swap max and min (sign flip)\n   - Update max_prod = max(num, max_prod * num)\n   - Update min_prod = min(num, min_prod * num)\n   - Update result = max(result, max_prod)\n3. Return result\n\n**Key Insight:** Unlike sum, product can flip signs. A negative product can become maximum if multiplied by another negative. Tracking both max and min handles this.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def maxProduct(self, nums):\n    if not nums:\n        return 0\n    \n    max_prod = min_prod = result = nums[0]\n    \n    for num in nums[1:]:\n        if num < 0:\n            max_prod, min_prod = min_prod, max_prod\n        \n        max_prod = max(num, max_prod * num)\n        min_prod = min(num, min_prod * num)\n        result = max(result, max_prod)\n    \n    return result"
+  },
+  "find-minimum-in-rotated-sorted-array": {
+    "approach": "Problem Solving",
+    "explanation": "Find the minimum element in a rotated sorted array.\n\n**Algorithm Steps:**\n1. Use binary search with left=0, right=len-1\n2. Compare mid element with right element\n3. If nums[mid] > nums[right]: minimum is in right half (left = mid + 1)\n4. Else: minimum is in left half including mid (right = mid)\n5. Continue until left == right, then return nums[left]\n\n**Key Insight:** In a rotated array, one half is always sorted. By comparing mid with right, we can determine which half contains the minimum and eliminate the other half.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def findMin(self, nums):\n    left, right = 0, len(nums) - 1\n    \n    while left < right:\n        mid = (left + right) // 2\n        \n        if nums[mid] > nums[right]:\n            left = mid + 1\n        else:\n            right = mid\n    \n    return nums[left]"
+  },
+  "search-in-rotated-sorted-array": {
+    "approach": "Problem Solving",
+    "explanation": "Search for a target in a rotated sorted array.\n\n**Algorithm Steps:**\n1. Use binary search\n2. Determine which half is sorted by comparing nums[left] with nums[mid]\n3. If left half is sorted:\n   - If target is in [left, mid), search left half\n   - Otherwise, search right half\n4. If right half is sorted:\n   - If target is in (mid, right], search right half\n   - Otherwise, search left half\n\n**Key Insight:** At least one half is always sorted. We check if target is in the sorted half, otherwise search the other half.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def search(self, nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        mid = (left + right) // 2\n        \n        if nums[mid] == target:\n            return mid\n        \n        # Left half is sorted\n        if nums[left] <= nums[mid]:\n            if nums[left] <= target < nums[mid]:\n                right = mid - 1\n            else:\n                left = mid + 1\n        # Right half is sorted\n        else:\n            if nums[mid] < target <= nums[right]:\n                left = mid + 1\n            else:\n                right = mid - 1\n    \n    return -1"
+  },
+  "3sum": {
+    "approach": "Two Pointers",
+    "explanation": "Find all unique triplets in an array that sum to zero.\n\n**Algorithm Steps:**\n1. Sort the array first (enables two-pointer technique)\n2. Fix one element at index i\n3. Use two pointers (left = i+1, right = len-1) to find pairs that sum to -nums[i]\n4. Skip duplicate values to avoid duplicate triplets:\n   - Skip if nums[i] == nums[i-1]\n   - Skip left duplicates while left < right\n   - Skip right duplicates while left < right\n5. When sum == 0, add triplet and move both pointers\n\n**Key Insight:** Sorting allows us to use two pointers efficiently. The duplicate skipping ensures we only get unique triplets without using additional space for a set.",
+    "pattern": "Two Pointers, Array",
+    "time_complexity": "O(n\u00b2)",
+    "key_insight": "Sorting allows us to use two pointers and skip duplicates",
+    "hint_sequence": [
+      "Sort the array first",
+      "Fix one element and use two pointers for the rest",
+      "Skip duplicates to avoid duplicate triplets"
+    ],
+    "code_template": "def threeSum(self, nums):\n    nums.sort()\n    result = []\n    \n    for i in range(len(nums) - 2):\n        # Skip duplicates for first number\n        if i > 0 and nums[i] == nums[i-1]:\n            continue\n            \n        left, right = i + 1, len(nums) - 1\n        \n        while left < right:\n            total = nums[i] + nums[left] + nums[right]\n            \n            if total < 0:\n                left += 1\n            elif total > 0:\n                right -= 1\n            else:\n                result.append([nums[i], nums[left], nums[right]])\n                \n                # Skip duplicates for second and third numbers\n                while left < right and nums[left] == nums[left+1]:\n                    left += 1\n                while left < right and nums[right] == nums[right-1]:\n                    right -= 1\n                    \n                left += 1\n                right -= 1\n    \n    return result"
+  },
+  "container-with-most-water": {
+    "approach": "Problem Solving",
+    "explanation": "Find two lines that together with the x-axis form a container that holds the most water.\n\n**Algorithm Steps:**\n1. Use two pointers: left at start, right at end\n2. Calculate area: min(height[left], height[right]) * (right - left)\n3. Move the pointer with the smaller height (greedy choice)\n4. Update maximum area as we go\n5. Continue until pointers meet\n\n**Key Insight:** Moving the pointer with the smaller height is optimal because the width decreases, so we need to potentially increase the height. Moving the larger height pointer can only decrease the area.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def maxArea(self, height):\n    left = 0\n    right = len(height) - 1\n    max_area = 0\n    \n    while left < right:\n        width = right - left\n        current_area = min(height[left], height[right]) * width\n        max_area = max(max_area, current_area)\n        \n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n    \n    return max_area"
+  },
+  "sum-of-two-integers": {
+    "approach": "Problem Solving",
+    "explanation": "Add two integers without using + or - operators (using bit manipulation).\n\n**Algorithm Steps:**\n1. Use XOR (^) to add bits without carry: a ^ b gives sum without carry\n2. Use AND (&) and left shift (<<) to calculate carry: (a & b) << 1\n3. Add sum and carry recursively until carry becomes 0\n4. Handle negative numbers using two's complement representation\n5. Use mask to ensure 32-bit integer behavior\n\n**Key Insight:** XOR performs addition without carry, AND with shift calculates carry. We add sum and carry until no carry remains. This is how CPU adders work at the hardware level.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def getSum(self, a, b):\n    mask = 0xffffffff\n    while b & mask:\n        carry = (a & b) << 1\n        a = a ^ b\n        b = carry\n    return a & mask if b > mask else a"
+  },
+  "number-of-1-bits": {
+    "approach": "Problem Solving",
+    "explanation": "Count the number of 1 bits in a binary representation (Hamming weight).\n\n**Algorithm Steps:**\n1. Use bitwise AND with 1 to check least significant bit\n2. Right shift number to check next bit\n3. Count how many times we get 1\n4. Continue until number becomes 0\n5. Alternative: Use n & (n-1) trick to remove rightmost 1 bit\n\n**Key Insight:** n & (n-1) removes the rightmost 1 bit. Counting how many times we can do this gives us the number of 1 bits efficiently.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def hammingWeight(self, n):\n    count = 0\n    while n:\n        count += n & 1\n        n >>= 1\n    return count"
+  },
+  "counting-bits": {
+    "approach": "Problem Solving",
+    "explanation": "Count 1 bits for all numbers from 0 to n.\n\n**Algorithm Steps:**\n1. Use dynamic programming approach\n2. For number i, the count is: count[i] = count[i >> 1] + (i & 1)\n3. i >> 1 removes last bit (we already computed this)\n4. i & 1 checks if last bit is 1\n5. Build up from 0 to n\n\n**Key Insight:** The number of 1s in i equals the number of 1s in i/2 (right shift) plus whether the last bit is 1. This DP approach is very efficient.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def countBits(self, n):\n    result = [0] * (n + 1)\n    for i in range(1, n + 1):\n        result[i] = result[i >> 1] + (i & 1)\n    return result"
+  },
+  "missing-number": {
+    "approach": "Problem Solving",
+    "explanation": "Find the missing number in array containing n distinct numbers in range [0, n].\n\n**Algorithm Steps:**\n1. Calculate expected sum: n * (n + 1) / 2\n2. Calculate actual sum of array elements\n3. Missing number = expected_sum - actual_sum\n4. Alternative: Use XOR - XOR all numbers 0 to n, then XOR with array\n\n**Key Insight:** The sum of 0 to n is known. The difference between expected and actual sum is the missing number. XOR approach works because x XOR x = 0.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def missingNumber(self, nums):\n    n = len(nums)\n    expected_sum = n * (n + 1) // 2\n    actual_sum = sum(nums)\n    return expected_sum - actual_sum"
+  },
+  "reverse-bits": {
+    "approach": "Problem Solving",
+    "explanation": "Reverse the bits of a 32-bit unsigned integer.\n\n**Algorithm Steps:**\n1. Initialize result to 0\n2. For 32 iterations:\n   - Extract rightmost bit: n & 1\n   - Add to result: result = (result << 1) | bit\n   - Right shift n: n >>= 1\n3. Return reversed result\n\n**Key Insight:** We build the result bit by bit from right to left, taking bits from the input from right to left. This reverses the bit order.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def reverseBits(self, n):\n    result = 0\n    for i in range(32):\n        result = (result << 1) | (n & 1)\n        n >>= 1\n    return result"
+  },
+  "climbing-stairs": {
+    "approach": "Dynamic Programming",
+    "explanation": "Count the number of ways to climb n stairs (can take 1 or 2 steps at a time).\n\n**Algorithm Steps:**\n1. Recognize this is the Fibonacci sequence\n2. Base cases: 1 stair = 1 way, 2 stairs = 2 ways\n3. For n stairs: ways(n) = ways(n-1) + ways(n-2)\n4. Use iterative approach to avoid recursion overhead:\n   - Track previous two values\n   - Build up from base cases\n\n**Key Insight:** This is essentially the Fibonacci sequence. Each step can be reached from either (n-1) or (n-2), so we sum those possibilities.",
+    "pattern": "Dynamic Programming",
+    "time_complexity": "O(n)",
+    "key_insight": "This is essentially the Fibonacci sequence",
+    "hint_sequence": [
+      "How many ways can you reach the last step?",
+      "You can arrive from step n-1 or step n-2",
+      "Build up from base cases: step 1 and step 2"
+    ],
+    "code_template": "def climbStairs(self, n):\n    if n <= 2:\n        return n\n    \n    prev2, prev1 = 1, 2\n    \n    for i in range(3, n + 1):\n        current = prev1 + prev2\n        prev2, prev1 = prev1, current\n    \n    return prev1"
+  },
+  "coin-change": {
+    "approach": "Problem Solving",
+    "explanation": "Find the minimum number of coins to make a target amount.\n\n**Algorithm Steps:**\n1. Create DP array where dp[i] = minimum coins for amount i\n2. Initialize dp[0] = 0, others to infinity\n3. For each coin, update dp for all amounts >= coin value\n4. dp[i] = min(dp[i], dp[i - coin] + 1)\n5. Return dp[amount] if not infinity, else -1\n\n**Key Insight:** This is a classic unbounded knapsack problem. We build up the solution from smaller amounts, trying each coin and taking the minimum.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def coinChange(self, coins, amount):\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0\n    for coin in coins:\n        for i in range(coin, amount + 1):\n            dp[i] = min(dp[i], dp[i - coin] + 1)\n    return dp[amount] if dp[amount] != float('inf') else -1"
+  },
+  "longest-increasing-subsequence": {
+    "approach": "Problem Solving",
+    "explanation": "Find the length of the longest strictly increasing subsequence.\n\n**Algorithm Steps:**\n1. Create DP array where dp[i] = length of LIS ending at index i\n2. For each element, check all previous elements\n3. If nums[j] < nums[i], update dp[i] = max(dp[i], dp[j] + 1)\n4. Return maximum value in dp array\n\n**Key Insight:** For each position, we check all previous positions. If a previous element is smaller, we can extend that subsequence by including the current element.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def lengthOfLIS(self, nums):\n    if not nums:\n        return 0\n    dp = [1] * len(nums)\n    for i in range(1, len(nums)):\n        for j in range(i):\n            if nums[j] < nums[i]:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)"
+  },
+  "longest-common-subsequence": {
+    "approach": "Problem Solving",
+    "explanation": "Find the length of the longest common subsequence between two strings.\n\n**Algorithm Steps:**\n1. Create 2D DP table: dp[i][j] = LCS length for text1[0:i] and text2[0:j]\n2. If characters match: dp[i][j] = dp[i-1][j-1] + 1\n3. If characters don't match: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n4. Build up from smaller subproblems\n5. Return dp[m][n]\n\n**Key Insight:** This is a classic 2D DP problem. We compare characters and either extend a match or take the best result from skipping a character in either string.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def longestCommonSubsequence(self, text1, text2):\n    m, n = len(text1), len(text2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if text1[i-1] == text2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[m][n]"
+  },
+  "word-break": {
+    "approach": "Problem Solving",
+    "explanation": "Check if a string can be segmented into dictionary words.\n\n**Algorithm Steps:**\n1. Create DP array where dp[i] = True if s[0:i] can be segmented\n2. Initialize dp[0] = True (empty string)\n3. For each position i, check all substrings ending at i\n4. If s[j:i] is in dictionary and dp[j] is True, set dp[i] = True\n5. Return dp[len(s)]\n\n**Key Insight:** We build up the solution by checking if prefixes can be segmented. If a prefix is valid and the remaining substring is a word, the whole string is valid.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def wordBreak(self, s, wordDict):\n    word_set = set(wordDict)\n    dp = [False] * (len(s) + 1)\n    dp[0] = True\n    for i in range(1, len(s) + 1):\n        for j in range(i):\n            if dp[j] and s[j:i] in word_set:\n                dp[i] = True\n                break\n    return dp[len(s)]"
+  },
+  "combination-sum-iv": {
+    "approach": "Problem Solving",
+    "explanation": "Count the number of possible combinations that add up to target (order matters).\n\n**Algorithm Steps:**\n1. Use dynamic programming: dp[i] = number of ways to make sum i\n2. Initialize dp[0] = 1 (one way to make sum 0)\n3. For each amount from 1 to target:\n   - For each number in nums:\n     - If amount >= num: dp[amount] += dp[amount - num]\n4. Return dp[target]\n\n**Key Insight:** This is similar to coin change, but order matters (permutations, not combinations). We count all possible sequences that sum to target.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def combinationSum4(self, nums, target):\n    dp = [0] * (target + 1)\n    dp[0] = 1\n    for i in range(1, target + 1):\n        for num in nums:\n            if i >= num:\n                dp[i] += dp[i - num]\n    return dp[target]"
+  },
+  "house-robber": {
+    "approach": "Problem Solving",
+    "explanation": "Maximize money robbed from houses (can't rob adjacent houses).\n\n**Algorithm Steps:**\n1. For each house, decide: rob it or skip it\n2. If we rob house i: profit = nums[i] + max_profit from houses before i-1\n3. If we skip house i: profit = max_profit from houses up to i-1\n4. Take the maximum of these two options\n5. Use dynamic programming to build up the solution\n\n**Key Insight:** This is a classic DP problem. At each house, we choose the maximum between robbing it (and taking profit from 2 houses back) or skipping it (and taking profit from 1 house back).",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def rob(self, nums):\n    if not nums:\n        return 0\n    if len(nums) == 1:\n        return nums[0]\n    \n    prev2 = nums[0]\n    prev1 = max(nums[0], nums[1])\n    \n    for i in range(2, len(nums)):\n        current = max(prev1, prev2 + nums[i])\n        prev2 = prev1\n        prev1 = current\n    \n    return prev1"
+  },
+  "house-robber-ii": {
+    "approach": "Problem Solving",
+    "explanation": "Rob houses arranged in a circle (can't rob adjacent, first and last are adjacent).\n\n**Algorithm Steps:**\n1. Split into two cases:\n   - Rob houses 0 to n-2 (exclude last)\n   - Rob houses 1 to n-1 (exclude first)\n2. Use same DP as House Robber I for each case\n3. Return maximum of the two cases\n\n**Key Insight:** Since first and last are adjacent, we can't rob both. So we solve two subproblems: one excluding first house, one excluding last house.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def rob(self, nums):\n    if len(nums) == 1:\n        return nums[0]\n    def rob_linear(houses):\n        prev2, prev1 = 0, 0\n        for house in houses:\n            current = max(prev1, prev2 + house)\n            prev2, prev1 = prev1, current\n        return prev1\n    return max(rob_linear(nums[:-1]), rob_linear(nums[1:]))"
+  },
+  "decode-ways": {
+    "approach": "Problem Solving",
+    "explanation": "Count ways to decode a string of digits (1='A', 2='B', ..., 26='Z').\n\n**Algorithm Steps:**\n1. Use DP: dp[i] = ways to decode substring ending at i\n2. Base case: dp[0] = 1 (empty string has 1 way)\n3. For each position:\n   - If current digit is valid (1-9): add dp[i-1]\n   - If current and previous form valid two-digit (10-26): add dp[i-2]\n4. Return dp[n]\n\n**Key Insight:** Each digit can be decoded alone (if 1-9) or with previous digit (if 10-26). We sum the ways from both possibilities.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def numDecodings(self, s):\n    if not s or s[0] == '0':\n        return 0\n    n = len(s)\n    dp = [0] * (n + 1)\n    dp[0] = dp[1] = 1\n    for i in range(2, n + 1):\n        if s[i-1] != '0':\n            dp[i] += dp[i-1]\n        if 10 <= int(s[i-2:i]) <= 26:\n            dp[i] += dp[i-2]\n    return dp[n]"
+  },
+  "unique-paths": {
+    "approach": "Problem Solving",
+    "explanation": "Count unique paths from top-left to bottom-right in m\u00d7n grid (can only move right/down).\n\n**Algorithm Steps:**\n1. Use DP: dp[i][j] = paths to reach cell (i,j)\n2. Base case: dp[0][j] = 1, dp[i][0] = 1 (only one way along edges)\n3. For each cell: dp[i][j] = dp[i-1][j] + dp[i][j-1]\n4. Can reach cell from above or left, so sum those paths\n5. Return dp[m-1][n-1]\n\n**Key Insight:** Each cell can only be reached from above or left. The number of paths to a cell is the sum of paths to cells above and left.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def uniquePaths(self, m, n):\n    dp = [[1] * n for _ in range(m)]\n    for i in range(1, m):\n        for j in range(1, n):\n            dp[i][j] = dp[i-1][j] + dp[i][j-1]\n    return dp[m-1][n-1]"
+  },
+  "jump-game": {
+    "approach": "Problem Solving",
+    "explanation": "Check if you can reach the last index (can jump up to nums[i] steps from index i).\n\n**Algorithm Steps:**\n1. Track the maximum reachable index\n2. For each index, update max_reach = max(max_reach, i + nums[i])\n3. If current index > max_reach, return False (can't reach here)\n4. If max_reach >= last index, return True\n5. Continue until end or unreachable\n\n**Key Insight:** We don't need to track all possible paths. We just need to know the farthest we can reach. If we can't reach current index, we can't go further.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def canJump(self, nums):\n    max_reach = 0\n    for i in range(len(nums)):\n        if i > max_reach:\n            return False\n        max_reach = max(max_reach, i + nums[i])\n        if max_reach >= len(nums) - 1:\n            return True\n    return True"
+  },
+  "clone-graph": {
+    "approach": "Problem Solving",
+    "explanation": "Create a deep copy of an undirected graph.\n\n**Algorithm Steps:**\n1. Use DFS with a visited map (original node \u2192 cloned node)\n2. If node already cloned, return the clone\n3. Create new node with same value\n4. Add to visited map\n5. Recursively clone all neighbors\n6. Add cloned neighbors to cloned node's neighbors list\n\n**Key Insight:** The visited map prevents infinite loops and ensures we reuse cloned nodes for shared neighbors, maintaining the graph structure.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def cloneGraph(self, node):\n    if not node:\n        return None\n    visited = {}\n    def dfs(original):\n        if original in visited:\n            return visited[original]\n        clone = Node(original.val)\n        visited[original] = clone\n        for neighbor in original.neighbors:\n            clone.neighbors.append(dfs(neighbor))\n        return clone\n    return dfs(node)"
+  },
+  "course-schedule": {
+    "approach": "Problem Solving",
+    "explanation": "Check if all courses can be finished (no circular dependencies).\n\n**Algorithm Steps:**\n1. Build graph: course \u2192 list of prerequisites\n2. Calculate in-degree (number of prerequisites) for each course\n3. Use topological sort (BFS):\n   - Start with courses having in-degree 0\n   - Process each course, decrement in-degree of dependent courses\n   - Add courses with in-degree 0 to queue\n4. If all courses processed, return True (no cycle)\n\n**Key Insight:** This is a cycle detection problem. Topological sort can only complete if there are no cycles. If we can't process all courses, there's a circular dependency.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def canFinish(self, numCourses, prerequisites):\n    graph = [[] for _ in range(numCourses)]\n    in_degree = [0] * numCourses\n    for course, prereq in prerequisites:\n        graph[prereq].append(course)\n        in_degree[course] += 1\n    queue = [i for i in range(numCourses) if in_degree[i] == 0]\n    count = 0\n    while queue:\n        node = queue.pop(0)\n        count += 1\n        for neighbor in graph[node]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    return count == numCourses"
+  },
+  "pacific-atlantic-water-flow": {
+    "approach": "Problem Solving",
+    "explanation": "Find cells that can flow to both Pacific and Atlantic oceans.\n\n**Algorithm Steps:**\n1. Start DFS from Pacific edges (top and left)\n2. Mark all reachable cells in Pacific set\n3. Start DFS from Atlantic edges (bottom and right)\n4. Mark all reachable cells in Atlantic set\n5. Return intersection of both sets\n\n**Key Insight:** Instead of checking each cell, we start from ocean edges and mark all cells that can reach each ocean. The intersection gives cells that can reach both.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def pacificAtlantic(self, heights):\n    if not heights:\n        return []\n    m, n = len(heights), len(heights[0])\n    pacific = set()\n    atlantic = set()\n    def dfs(r, c, visited, prev_height):\n        if (r, c) in visited or r < 0 or r >= m or c < 0 or c >= n or heights[r][c] < prev_height:\n            return\n        visited.add((r, c))\n        for dr, dc in [(0,1), (0,-1), (1,0), (-1,0)]:\n            dfs(r + dr, c + dc, visited, heights[r][c])\n    for i in range(m):\n        dfs(i, 0, pacific, heights[i][0])\n        dfs(i, n-1, atlantic, heights[i][n-1])\n    for j in range(n):\n        dfs(0, j, pacific, heights[0][j])\n        dfs(m-1, j, atlantic, heights[m-1][j])\n    return list(pacific & atlantic)"
+  },
+  "number-of-islands": {
+    "approach": "Problem Solving",
+    "explanation": "Count the number of islands (connected 1s) in a 2D grid.\n\n**Algorithm Steps:**\n1. Iterate through all cells\n2. When we find a '1' (land), increment island count\n3. Use DFS to mark all connected '1's as '0's (visited)\n4. DFS explores all 4 directions (up, down, left, right)\n5. Continue until all cells are processed\n\n**Key Insight:** Each DFS call marks an entire island. By marking visited cells as '0', we avoid counting the same island multiple times.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def numIslands(self, grid):\n    if not grid:\n        return 0\n    m, n = len(grid), len(grid[0])\n    count = 0\n    def dfs(i, j):\n        if i < 0 or i >= m or j < 0 or j >= n or grid[i][j] != '1':\n            return\n        grid[i][j] = '0'\n        for di, dj in [(0,1), (0,-1), (1,0), (-1,0)]:\n            dfs(i + di, j + dj)\n    for i in range(m):\n        for j in range(n):\n            if grid[i][j] == '1':\n                count += 1\n                dfs(i, j)\n    return count"
+  },
+  "longest-consecutive-sequence": {
+    "approach": "Problem Solving",
+    "explanation": "Find length of longest consecutive number sequence.\n\n**Algorithm Steps:**\n1. Convert array to set for O(1) lookup\n2. For each number, check if it's start of sequence (num-1 not in set)\n3. If start, count consecutive numbers by incrementing\n4. Track maximum sequence length\n5. Return maximum\n\n**Key Insight:** We only start counting from the beginning of a sequence. This ensures O(n) time - each number is visited at most twice (once as start, once as part of sequence).",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def longestConsecutive(self, nums):\n    if not nums:\n        return 0\n    num_set = set(nums)\n    max_length = 0\n    for num in num_set:\n        if num - 1 not in num_set:\n            current_num = num\n            current_length = 1\n            while current_num + 1 in num_set:\n                current_num += 1\n                current_length += 1\n            max_length = max(max_length, current_length)\n    return max_length"
+  },
+  "alien-dictionary": {
+    "approach": "Problem Solving",
+    "explanation": "Find alien language character order from sorted words.\n\n**Algorithm Steps:**\n1. Build graph: character \u2192 list of characters that come after it\n2. Calculate in-degree for each character\n3. Use topological sort (BFS):\n   - Start with characters having in-degree 0\n   - Process each, decrement in-degree of neighbors\n   - Add neighbors with in-degree 0 to queue\n4. If all characters processed, return order; else return \"\" (cycle exists)\n\n**Key Insight:** This is a topological sorting problem. The order of characters is determined by comparing adjacent words. If we can't sort all characters, there's a cycle (invalid dictionary).",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def alienOrder(self, words):\n    graph = {}\n    in_degree = {}\n    for word in words:\n        for char in word:\n            if char not in graph:\n                graph[char] = []\n            if char not in in_degree:\n                in_degree[char] = 0\n    for i in range(len(words) - 1):\n        word1, word2 = words[i], words[i+1]\n        if len(word1) > len(word2) and word1.startswith(word2):\n            return \"\"\n        for j in range(min(len(word1), len(word2))):\n            if word1[j] != word2[j]:\n                graph[word1[j]].append(word2[j])\n                in_degree[word2[j]] += 1\n                break\n    queue = [char for char in in_degree if in_degree[char] == 0]\n    result = []\n    while queue:\n        char = queue.pop(0)\n        result.append(char)\n        for neighbor in graph[char]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    if len(result) != len(in_degree):\n        return \"\"\n    return ''.join(result)"
+  },
+  "graph-valid-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Check if graph with n nodes and n-1 edges is a valid tree.\n\n**Algorithm Steps:**\n1. A tree must have exactly n-1 edges (if n nodes)\n2. Use DFS to check connectivity\n3. Check for cycles: if we visit an already-visited node (not parent), cycle exists\n4. Check if all nodes are reachable from starting node\n5. Return True only if: n-1 edges AND no cycles AND all nodes connected\n\n**Key Insight:** A valid tree has exactly n-1 edges, is connected, and has no cycles. We can check all three conditions with a single DFS traversal.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def validTree(self, n, edges):\n    if len(edges) != n - 1:\n        return False\n    graph = [[] for _ in range(n)]\n    for u, v in edges:\n        graph[u].append(v)\n        graph[v].append(u)\n    visited = set()\n    def dfs(node, parent):\n        if node in visited:\n            return False\n        visited.add(node)\n        for neighbor in graph[node]:\n            if neighbor != parent:\n                if not dfs(neighbor, node):\n                    return False\n        return True\n    return dfs(0, -1) and len(visited) == n"
+  },
+  "number-of-connected-components-in-an-undirected-graph": {
+    "approach": "Problem Solving",
+    "explanation": "Count the number of connected components in an undirected graph.\n\n**Algorithm Steps:**\n1. Use Union-Find (Disjoint Set Union) data structure\n2. Initialize each node as its own parent\n3. For each edge, union the two nodes\n4. Union operation: find root of both, make one root point to other\n5. Count unique roots (each root represents one component)\n6. Return count of unique roots\n\n**Key Insight:** Union-Find efficiently tracks connected components. Each component has one root. The number of unique roots equals the number of components.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def countComponents(self, n, edges):\n    parent = list(range(n))\n    def find(x):\n        if parent[x] != x:\n            parent[x] = find(parent[x])\n        return parent[x]\n    def union(x, y):\n        parent[find(x)] = find(y)\n    for u, v in edges:\n        union(u, v)\n    return len(set(find(i) for i in range(n)))"
+  },
+  "insert-interval": {
+    "approach": "Problem Solving",
+    "explanation": "Insert a new interval into sorted list of non-overlapping intervals, merging if necessary.\n\n**Algorithm Steps:**\n1. Find position where new interval should be inserted\n2. Add all intervals that end before new interval starts\n3. Merge overlapping intervals:\n   - Update new interval: min(start), max(end)\n   - Continue while intervals overlap\n4. Add merged interval\n5. Add remaining intervals\n\n**Key Insight:** Since intervals are sorted, we can insert in one pass. We merge all overlapping intervals by updating the new interval's bounds.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def insert(self, intervals, newInterval):\n    result = []\n    i = 0\n    while i < len(intervals) and intervals[i][1] < newInterval[0]:\n        result.append(intervals[i])\n        i += 1\n    while i < len(intervals) and intervals[i][0] <= newInterval[1]:\n        newInterval[0] = min(newInterval[0], intervals[i][0])\n        newInterval[1] = max(newInterval[1], intervals[i][1])\n        i += 1\n    result.append(newInterval)\n    while i < len(intervals):\n        result.append(intervals[i])\n        i += 1\n    return result"
+  },
+  "merge-intervals": {
+    "approach": "Problem Solving",
+    "explanation": "Merge overlapping intervals.\n\n**Algorithm Steps:**\n1. Sort intervals by start time\n2. Initialize merged list with first interval\n3. For each subsequent interval:\n   - If it overlaps with last merged interval (start <= last_end), merge them\n   - Otherwise, add as new interval\n4. Return merged list\n\n**Key Insight:** Sorting ensures we process intervals in order. Overlapping intervals can be merged by taking the minimum start and maximum end.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def merge(self, intervals):\n    if not intervals:\n        return []\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    for current in intervals[1:]:\n        if current[0] <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], current[1])\n        else:\n            merged.append(current)\n    return merged"
+  },
+  "non-overlapping-intervals": {
+    "approach": "Problem Solving",
+    "explanation": "Find minimum intervals to remove so no overlaps remain.\n\n**Algorithm Steps:**\n1. Sort intervals by end time\n2. Track end of last kept interval\n3. For each interval:\n   - If it starts before last end, it overlaps (remove it, count++)\n   - Otherwise, keep it and update last end\n4. Return count of removed intervals\n\n**Key Insight:** Greedy approach: keep intervals that end earliest. This maximizes space for future intervals. Sorting by end time is key.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def eraseOverlapIntervals(self, intervals):\n    if not intervals:\n        return 0\n    intervals.sort(key=lambda x: x[1])\n    count = 0\n    end = intervals[0][1]\n    for i in range(1, len(intervals)):\n        if intervals[i][0] < end:\n            count += 1\n        else:\n            end = intervals[i][1]\n    return count"
+  },
+  "meeting-rooms": {
+    "approach": "Problem Solving",
+    "explanation": "Check if one person can attend all meetings (no overlaps).\n\n**Algorithm Steps:**\n1. Sort intervals by start time\n2. Check if any interval's end time > next interval's start time\n3. If overlap found, return False\n4. If no overlaps, return True\n\n**Key Insight:** After sorting, we only need to check adjacent intervals. If sorted intervals don't overlap, no intervals overlap.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def canAttendMeetings(self, intervals):\n    intervals.sort(key=lambda x: x[0])\n    for i in range(len(intervals) - 1):\n        if intervals[i][1] > intervals[i+1][0]:\n            return False\n    return True"
+  },
+  "meeting-rooms-ii": {
+    "approach": "Problem Solving",
+    "explanation": "Find minimum number of meeting rooms needed.\n\n**Algorithm Steps:**\n1. Separate start and end times into sorted arrays\n2. Use two pointers: one for starts, one for ends\n3. When start < end: need a room (increment count)\n4. When start >= end: a room freed (decrement count, move end pointer)\n5. Track maximum rooms needed\n\n**Key Insight:** We don't need to track which room. We just need to know how many concurrent meetings happen. When a meeting starts before another ends, we need another room.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def minMeetingRooms(self, intervals):\n    if not intervals:\n        return 0\n    start = sorted([i[0] for i in intervals])\n    end = sorted([i[1] for i in intervals])\n    rooms = 0\n    end_ptr = 0\n    for start_time in start:\n        if start_time < end[end_ptr]:\n            rooms += 1\n        else:\n            end_ptr += 1\n    return rooms"
+  },
+  "reverse-linked-list": {
+    "approach": "Problem Solving",
+    "explanation": "Reverse a singly linked list.\n\n**Algorithm Steps:**\n1. Initialize prev = None and current = head\n2. While current is not None:\n   - Store next node: next_node = current.next\n   - Reverse the link: current.next = prev\n   - Move forward: prev = current, current = next_node\n3. Return prev (new head)\n\n**Key Insight:** We need to reverse links while preserving access to the next node. The three-pointer technique (prev, current, next) allows us to reverse links one at a time.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def reverseList(self, head):\n    prev = None\n    current = head\n    \n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n    \n    return prev"
+  },
+  "linked-list-cycle": {
+    "approach": "Problem Solving",
+    "explanation": "Detect if a linked list has a cycle using Floyd's cycle detection.\n\n**Algorithm Steps:**\n1. Use two pointers: slow (moves 1 step) and fast (moves 2 steps)\n2. If there's a cycle, fast will eventually catch up to slow\n3. If fast reaches None, there's no cycle\n4. If slow == fast, cycle detected\n\n**Key Insight:** Floyd's cycle detection (tortoise and hare) is elegant - if there's a cycle, the fast pointer will eventually \"lap\" the slow pointer. This works in O(n) time with O(1) space.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def hasCycle(self, head):\n    if not head or not head.next:\n        return False\n    \n    slow = head\n    fast = head.next\n    \n    while slow != fast:\n        if not fast or not fast.next:\n            return False\n        slow = slow.next\n        fast = fast.next.next\n    \n    return True"
+  },
+  "merge-two-sorted-lists": {
+    "approach": "Problem Solving",
+    "explanation": "Merge two sorted linked lists into one sorted list.\n\n**Algorithm Steps:**\n1. Create a dummy node to simplify edge cases\n2. Use a current pointer to build the result list\n3. Compare nodes from both lists:\n   - Append the smaller node to result\n   - Move the pointer of the list we took from\n4. Continue until one list is exhausted\n5. Append remaining nodes from the non-empty list\n\n**Key Insight:** The dummy node pattern eliminates special cases for the first node. We always compare the current nodes and take the smaller one, maintaining sorted order.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def mergeTwoLists(self, l1, l2):\n    dummy = ListNode(0)\n    current = dummy\n    \n    while l1 and l2:\n        if l1.val < l2.val:\n            current.next = l1\n            l1 = l1.next\n        else:\n            current.next = l2\n            l2 = l2.next\n        current = current.next\n    \n    current.next = l1 if l1 else l2\n    \n    return dummy.next"
+  },
+  "merge-k-sorted-lists": {
+    "approach": "Problem Solving",
+    "explanation": "Merge k sorted linked lists into one sorted list.\n\n**Algorithm Steps:**\n1. Use divide and conquer: merge pairs of lists\n2. Merge two lists at a time using two-pointer technique\n3. Continue merging until one list remains\n4. Alternative: Use min-heap to always get smallest node\n\n**Key Insight:** Merging k lists can be done by repeatedly merging pairs (divide and conquer) or using a heap to always process the smallest remaining node.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def mergeKLists(self, lists):\n    import heapq\n    heap = []\n    for i, node in enumerate(lists):\n        if node:\n            heapq.heappush(heap, (node.val, i, node))\n    dummy = ListNode(0)\n    current = dummy\n    while heap:\n        val, idx, node = heapq.heappop(heap)\n        current.next = node\n        current = current.next\n        if node.next:\n            heapq.heappush(heap, (node.next.val, idx, node.next))\n    return dummy.next"
+  },
+  "remove-nth-node-from-end-of-list": {
+    "approach": "Problem Solving",
+    "explanation": "Remove the nth node from the end of a linked list.\n\n**Algorithm Steps:**\n1. Use two pointers: first and second\n2. Move first pointer n+1 steps ahead\n3. Move both pointers until first reaches end\n4. Second pointer is now at node before target\n5. Remove target node by updating second.next\n\n**Key Insight:** The two-pointer technique with n+1 gap ensures the second pointer lands exactly before the node to remove when first reaches the end.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def removeNthFromEnd(self, head, n):\n    dummy = ListNode(0)\n    dummy.next = head\n    first = second = dummy\n    for _ in range(n + 1):\n        first = first.next\n    while first:\n        first = first.next\n        second = second.next\n    second.next = second.next.next\n    return dummy.next"
+  },
+  "reorder-list": {
+    "approach": "Problem Solving",
+    "explanation": "Reorder list: L0 \u2192 L1 \u2192 ... \u2192 Ln-1 \u2192 Ln to L0 \u2192 Ln \u2192 L1 \u2192 Ln-1 \u2192 ...\n\n**Algorithm Steps:**\n1. Find middle using slow/fast pointers\n2. Split list into two halves\n3. Reverse second half\n4. Merge two halves by alternating nodes\n\n**Key Insight:** This combines several techniques: finding middle, reversing list, and merging. The pattern is: first node, last node, second node, second-to-last, etc.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def reorderList(self, head):\n    if not head or not head.next:\n        return\n    slow = fast = head\n    while fast.next and fast.next.next:\n        slow = slow.next\n        fast = fast.next.next\n    prev = None\n    current = slow.next\n    slow.next = None\n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n    first, second = head, prev\n    while second:\n        temp1, temp2 = first.next, second.next\n        first.next = second\n        second.next = temp1\n        first, second = temp1, temp2"
+  },
+  "set-matrix-zeroes": {
+    "approach": "Problem Solving",
+    "explanation": "Set entire row and column to zero if any element is zero.\n\n**Algorithm Steps:**\n1. Use first row and column as markers\n2. First pass: mark which rows/cols need to be zeroed\n3. Second pass: set zeros based on markers\n4. Handle first row/column separately (they're used as markers)\n\n**Key Insight:** To do this in-place, we use the first row and column as extra storage to mark which rows/columns should be zeroed.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def setZeroes(self, matrix):\n    m, n = len(matrix), len(matrix[0])\n    first_row_zero = any(matrix[0][j] == 0 for j in range(n))\n    first_col_zero = any(matrix[i][0] == 0 for i in range(m))\n    for i in range(1, m):\n        for j in range(1, n):\n            if matrix[i][j] == 0:\n                matrix[i][0] = 0\n                matrix[0][j] = 0\n    for i in range(1, m):\n        for j in range(1, n):\n            if matrix[i][0] == 0 or matrix[0][j] == 0:\n                matrix[i][j] = 0\n    if first_row_zero:\n        for j in range(n):\n            matrix[0][j] = 0\n    if first_col_zero:\n        for i in range(m):\n            matrix[i][0] = 0"
+  },
+  "spiral-matrix": {
+    "approach": "Problem Solving",
+    "explanation": "Return elements of matrix in spiral order.\n\n**Algorithm Steps:**\n1. Use four boundaries: top, bottom, left, right\n2. Traverse right along top row, increment top\n3. Traverse down along right column, decrement right\n4. Traverse left along bottom row, decrement bottom\n5. Traverse up along left column, increment left\n6. Repeat until boundaries cross\n\n**Key Insight:** We maintain four boundaries and traverse in a spiral pattern, adjusting boundaries after each direction. This ensures we visit each element exactly once.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def spiralOrder(self, matrix):\n    if not matrix:\n        return []\n    result = []\n    top, bottom = 0, len(matrix) - 1\n    left, right = 0, len(matrix[0]) - 1\n    while top <= bottom and left <= right:\n        for j in range(left, right + 1):\n            result.append(matrix[top][j])\n        top += 1\n        for i in range(top, bottom + 1):\n            result.append(matrix[i][right])\n        right -= 1\n        if top <= bottom:\n            for j in range(right, left - 1, -1):\n                result.append(matrix[bottom][j])\n            bottom -= 1\n        if left <= right:\n            for i in range(bottom, top - 1, -1):\n                result.append(matrix[i][left])\n            left += 1\n    return result"
+  },
+  "rotate-image": {
+    "approach": "Problem Solving",
+    "explanation": "Rotate n\u00d7n matrix 90 degrees clockwise in-place.\n\n**Algorithm Steps:**\n1. Transpose the matrix (swap matrix[i][j] with matrix[j][i])\n2. Reverse each row\n3. This gives 90-degree clockwise rotation\n\n**Key Insight:** Transposing swaps rows and columns, reversing rows completes the rotation. This is more efficient than rotating element by element.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def rotate(self, matrix):\n    n = len(matrix)\n    for i in range(n):\n        for j in range(i, n):\n            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]\n    for i in range(n):\n        matrix[i].reverse()"
+  },
+  "word-search": {
+    "approach": "Problem Solving",
+    "explanation": "Check if a word exists in a 2D grid (can move up/down/left/right).\n\n**Algorithm Steps:**\n1. For each cell, start DFS if it matches first character\n2. Use DFS to explore all 4 directions\n3. Mark current cell as visited (temporarily modify grid)\n4. Recursively search for remaining characters\n5. Restore cell after backtracking\n6. Return True if word found, False otherwise\n\n**Key Insight:** This is a backtracking problem. We explore all paths, marking cells as visited during exploration and unmarking during backtracking to allow other paths to use them.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def exist(self, board, word):\n    m, n = len(board), len(board[0])\n    def dfs(i, j, index):\n        if index == len(word):\n            return True\n        if i < 0 or i >= m or j < 0 or j >= n or board[i][j] != word[index]:\n            return False\n        temp = board[i][j]\n        board[i][j] = '#'\n        found = (dfs(i+1, j, index+1) or dfs(i-1, j, index+1) or\n                dfs(i, j+1, index+1) or dfs(i, j-1, index+1))\n        board[i][j] = temp\n        return found\n    for i in range(m):\n        for j in range(n):\n            if dfs(i, j, 0):\n                return True\n    return False"
+  },
+  "longest-substring-without-repeating-characters": {
+    "approach": "Problem Solving",
+    "explanation": "Find the length of the longest substring without repeating characters.\n\n**Algorithm Steps:**\n1. Use a sliding window with two pointers (left and right)\n2. Use a hash map to track the last index of each character\n3. Expand the window by moving right pointer\n4. If we encounter a duplicate:\n   - Move left pointer to max(left, last_index + 1) to skip the duplicate\n5. Update the character's last index\n6. Track the maximum window size\n\n**Key Insight:** The sliding window technique efficiently finds the longest valid substring. When we find a duplicate, we know the substring starting before the duplicate's last occurrence is invalid, so we skip it.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def lengthOfLongestSubstring(self, s):\n    char_map = {}\n    left = 0\n    max_length = 0\n    \n    for right in range(len(s)):\n        if s[right] in char_map:\n            left = max(left, char_map[s[right]] + 1)\n        \n        char_map[s[right]] = right\n        max_length = max(max_length, right - left + 1)\n    \n    return max_length"
+  },
+  "longest-repeating-character-replacement": {
+    "approach": "Problem Solving",
+    "explanation": "Find length of longest substring with same character after replacing at most k characters.\n\n**Algorithm Steps:**\n1. Use sliding window technique\n2. Track character frequencies in current window\n3. Track maximum frequency in window\n4. If window_size - max_freq > k: shrink window (move left)\n5. Otherwise: expand window (move right)\n6. Track maximum window size\n\n**Key Insight:** We want to maximize the window where (window_size - most_frequent_char_count) <= k. The window with most frequent character gives us the longest valid substring.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def characterReplacement(self, s, k):\n    count = {}\n    max_count = 0\n    left = 0\n    for right in range(len(s)):\n        count[s[right]] = count.get(s[right], 0) + 1\n        max_count = max(max_count, count[s[right]])\n        if right - left + 1 - max_count > k:\n            count[s[left]] -= 1\n            left += 1\n    return len(s) - left"
+  },
+  "minimum-window-substring": {
+    "approach": "Problem Solving",
+    "explanation": "Find minimum window in string that contains all characters of another string.\n\n**Algorithm Steps:**\n1. Use sliding window with two pointers\n2. Expand window by moving right pointer\n3. Track character frequencies needed vs. in window\n4. When all characters found (valid window), try to shrink\n5. Move left pointer while window remains valid\n6. Track minimum window size and return substring\n\n**Key Insight:** We expand until we have all required characters, then shrink from left to find minimum window. This is a classic two-pointer sliding window problem.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def minWindow(self, s, t):\n    if not s or not t:\n        return \"\"\n    need = {}\n    for char in t:\n        need[char] = need.get(char, 0) + 1\n    left = 0\n    valid = 0\n    window = {}\n    start = 0\n    min_len = float('inf')\n    for right in range(len(s)):\n        char = s[right]\n        if char in need:\n            window[char] = window.get(char, 0) + 1\n            if window[char] == need[char]:\n                valid += 1\n        while valid == len(need):\n            if right - left + 1 < min_len:\n                start = left\n                min_len = right - left + 1\n            char = s[left]\n            if char in need:\n                if window[char] == need[char]:\n                    valid -= 1\n                window[char] -= 1\n            left += 1\n    return \"\" if min_len == float('inf') else s[start:start+min_len]"
+  },
+  "valid-anagram": {
+    "approach": "Problem Solving",
+    "explanation": "Check if two strings are anagrams (same characters, different order).\n\n**Algorithm Steps:**\n1. If lengths differ, return False\n2. Count character frequencies in first string\n3. Decrement counts for second string\n4. If all counts become zero, strings are anagrams\n5. Return True only if all characters match\n\n**Key Insight:** Anagrams have the same character frequencies. By counting and comparing, we can check anagram property in O(n) time.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def isAnagram(self, s, t):\n    if len(s) != len(t):\n        return False\n    count = {}\n    for char in s:\n        count[char] = count.get(char, 0) + 1\n    for char in t:\n        if char not in count:\n            return False\n        count[char] -= 1\n        if count[char] == 0:\n            del count[char]\n    return len(count) == 0"
+  },
+  "group-anagrams": {
+    "approach": "Problem Solving",
+    "explanation": "Group strings that are anagrams of each other.\n\n**Algorithm Steps:**\n1. For each string, create a key by sorting its characters\n2. Anagrams will have the same sorted key\n3. Group strings by their sorted key\n4. Return groups as list of lists\n\n**Key Insight:** Sorting characters creates a canonical form. All anagrams have the same sorted representation, making grouping straightforward.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def groupAnagrams(self, strs):\n    from collections import defaultdict\n    groups = defaultdict(list)\n    for s in strs:\n        key = ''.join(sorted(s))\n        groups[key].append(s)\n    return list(groups.values())"
+  },
+  "valid-parentheses": {
+    "approach": "Problem Solving",
+    "explanation": "Check if a string of brackets is valid (properly opened and closed).\n\n**Algorithm Steps:**\n1. Use a stack to track opening brackets\n2. Create a mapping of closing to opening brackets\n3. For each character:\n   - If it's an opening bracket, push to stack\n   - If it's a closing bracket:\n     * Check if stack is empty (no matching opener) \u2192 invalid\n     * Pop from stack and check if it matches the closing bracket\n4. After processing, stack should be empty (all brackets matched)\n\n**Key Insight:** Stacks naturally handle the LIFO (Last In First Out) property needed for matching brackets. The most recent opening bracket must match the current closing bracket.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def isValid(self, s):\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    \n    for char in s:\n        if char in mapping:\n            top = stack.pop() if stack else '#'\n            if mapping[char] != top:\n                return False\n        else:\n            stack.append(char)\n    \n    return not stack"
+  },
+  "valid-palindrome": {
+    "approach": "Problem Solving",
+    "explanation": "Check if a string is a palindrome (ignoring non-alphanumeric and case).\n\n**Algorithm Steps:**\n1. Use two pointers: left at start, right at end\n2. Skip non-alphanumeric characters by moving pointers inward\n3. Compare characters case-insensitively\n4. If mismatch, return False\n5. Continue until pointers meet\n\n**Key Insight:** Two pointers efficiently check palindromes in O(n) time with O(1) space, avoiding the need to create a cleaned string.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def isPalindrome(self, s):\n    left, right = 0, len(s) - 1\n    while left < right:\n        while left < right and not s[left].isalnum():\n            left += 1\n        while left < right and not s[right].isalnum():\n            right -= 1\n        if s[left].lower() != s[right].lower():\n            return False\n        left += 1\n        right -= 1\n    return True"
+  },
+  "longest-palindromic-substring": {
+    "approach": "Problem Solving",
+    "explanation": "Find the longest palindromic substring in a string.\n\n**Algorithm Steps:**\n1. For each possible center (character or between characters), expand outward\n2. Check both odd-length (center at character) and even-length (center between characters) palindromes\n3. Expand while characters match on both sides\n4. Track the longest palindrome found\n5. Return the substring\n\n**Key Insight:** Instead of checking every substring (O(n\u00b3)), we expand from centers. Each expansion is O(n) and we have O(n) centers, giving O(n\u00b2) time complexity.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def longestPalindrome(self, s):\n    if len(s) < 2:\n        return s\n    \n    def expand_around_center(left, right):\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return right - left - 1\n    \n    start = 0\n    max_len = 0\n    \n    for i in range(len(s)):\n        len1 = expand_around_center(i, i)\n        len2 = expand_around_center(i, i + 1)\n        current_max = max(len1, len2)\n        \n        if current_max > max_len:\n            max_len = current_max\n            start = i - (current_max - 1) // 2\n    \n    return s[start:start + max_len]"
+  },
+  "palindromic-substrings": {
+    "approach": "Problem Solving",
+    "explanation": "Count total number of palindromic substrings in a string.\n\n**Algorithm Steps:**\n1. For each possible center (character or between characters)\n2. Expand outward while characters match\n3. Count each palindrome found\n4. Check both odd-length (center at char) and even-length (center between chars)\n5. Return total count\n\n**Key Insight:** Instead of checking every substring, we expand from centers. Each expansion that matches adds one more palindromic substring to the count.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def countSubstrings(self, s):\n    count = 0\n    def expand_around_center(left, right):\n        nonlocal count\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            count += 1\n            left -= 1\n            right += 1\n    for i in range(len(s)):\n        expand_around_center(i, i)\n        expand_around_center(i, i + 1)\n    return count"
+  },
+  "encode-and-decode-strings": {
+    "approach": "Problem Solving",
+    "explanation": "Encode list of strings into one string and decode back.\n\n**Algorithm Steps:**\n1. Encoding: For each string, prepend length and delimiter (e.g., \"5#hello\")\n2. Decoding: Read length, then read that many characters\n3. Use delimiter to separate length from content\n4. Continue until string is fully processed\n\n**Key Insight:** By encoding length before each string, we know exactly how many characters to read. The delimiter prevents ambiguity between length and content.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def encode(self, strs):\n    return ''.join(f\"{len(s)}#{s}\" for s in strs)\n\ndef decode(self, s):\n    result = []\n    i = 0\n    while i < len(s):\n        j = i\n        while s[j] != '#':\n            j += 1\n        length = int(s[i:j])\n        result.append(s[j+1:j+1+length])\n        i = j + 1 + length\n    return result"
+  },
+  "maximum-depth-of-binary-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Find the maximum depth (height) of a binary tree.\n\n**Algorithm Steps:**\n1. Base case: if node is None, return 0\n2. Recursively find depth of left subtree\n3. Recursively find depth of right subtree\n4. Return 1 + max(left_depth, right_depth)\n\n**Key Insight:** The depth of a tree is 1 (for current node) plus the maximum depth of its subtrees. This is a classic recursive tree problem.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def maxDepth(self, root):\n    if not root:\n        return 0\n    return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))"
+  },
+  "same-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Check if two binary trees are structurally identical and have same values.\n\n**Algorithm Steps:**\n1. If both trees are None, return True\n2. If one is None and other isn't, return False\n3. If node values differ, return False\n4. Recursively check:\n   - Left subtrees are same AND\n   - Right subtrees are same\n5. Return True only if all checks pass\n\n**Key Insight:** Two trees are same if roots match AND both subtrees are same. This naturally leads to a recursive solution.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def isSameTree(self, p, q):\n    if not p and not q:\n        return True\n    if not p or not q:\n        return False\n    return (p.val == q.val and \n            self.isSameTree(p.left, q.left) and \n            self.isSameTree(p.right, q.right))"
+  },
+  "invert-binary-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Invert (mirror) a binary tree - swap left and right children.\n\n**Algorithm Steps:**\n1. Use DFS (post-order or pre-order)\n2. For each node, swap its left and right children\n3. Recursively invert left subtree\n4. Recursively invert right subtree\n5. Return the root\n\n**Key Insight:** This is a simple recursive problem. Swap children at each node, then recursively invert the subtrees. The order (pre-order vs post-order) doesn't matter here.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def invertTree(self, root):\n    if not root:\n        return None\n    root.left, root.right = root.right, root.left\n    self.invertTree(root.left)\n    self.invertTree(root.right)\n    return root"
+  },
+  "binary-tree-maximum-path-sum": {
+    "approach": "Problem Solving",
+    "explanation": "Find the maximum path sum in a binary tree where a path can start and end at any node.\n\n**Algorithm Steps:**\n1. Use DFS (post-order traversal) to process each node\n2. For each node, calculate the maximum path sum that goes through that node\n3. The path through a node can be:\n   - The node itself\n   - Node + left subtree path\n   - Node + right subtree path\n   - Node + left path + right path (forming a \"V\" shape)\n4. Return the maximum contribution this subtree can make to its parent (can't include both children - only one path up)\n5. Track the global maximum across all nodes\n\n**Key Insight:** This is a tricky problem because a path can't split at a node when going upward. When returning to parent, we can only take one branch (left OR right), but when calculating the maximum at a node, we can include both branches to form a complete path.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def maxPathSum(self, root):\n    max_sum = float('-inf')\n    def dfs(node):\n        nonlocal max_sum\n        if not node:\n            return 0\n        left = max(0, dfs(node.left))\n        right = max(0, dfs(node.right))\n        max_sum = max(max_sum, node.val + left + right)\n        return node.val + max(left, right)\n    dfs(root)\n    return max_sum"
+  },
+  "binary-tree-level-order-traversal": {
+    "approach": "Problem Solving",
+    "explanation": "Traverse a binary tree level by level (BFS).\n\n**Algorithm Steps:**\n1. Use a queue to implement BFS\n2. Start by adding the root to the queue\n3. While queue is not empty:\n   - Process all nodes at current level (queue size)\n   - Add their values to current level list\n   - Add children to queue for next level\n4. Add each level's list to result\n5. Return result as list of lists\n\n**Key Insight:** BFS naturally processes nodes level by level. By tracking the queue size at the start of each iteration, we can process exactly one level at a time.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def levelOrder(self, root):\n    if not root:\n        return []\n    result = []\n    queue = [root]\n    while queue:\n        level = []\n        size = len(queue)\n        for _ in range(size):\n            node = queue.pop(0)\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level)\n    return result"
+  },
+  "serialize-and-deserialize-binary-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Convert a binary tree to/from a string representation.\n\n**Algorithm Steps:**\n1. Serialization (Tree \u2192 String):\n   - Use pre-order traversal (root \u2192 left \u2192 right)\n   - Use special marker (e.g., \"None\") for null nodes\n   - Join with delimiter (e.g., comma)\n2. Deserialization (String \u2192 Tree):\n   - Split string by delimiter\n   - Use pre-order traversal to rebuild tree\n   - When encountering \"None\", return None\n   - Recursively build left and right subtrees\n\n**Key Insight:** Pre-order traversal with null markers uniquely represents a binary tree. The first element is always the root, making reconstruction straightforward.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def serialize(self, root):\n    if not root:\n        return \"None\"\n    return f\"{root.val},{self.serialize(root.left)},{self.serialize(root.right)}\"\n\ndef deserialize(self, data):\n    def build_tree(nodes):\n        val = nodes.pop(0)\n        if val == \"None\":\n            return None\n        node = TreeNode(int(val))\n        node.left = build_tree(nodes)\n        node.right = build_tree(nodes)\n        return node\n    nodes = data.split(',')\n    return build_tree(nodes)"
+  },
+  "subtree-of-another-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Check if one binary tree is a subtree of another.\n\n**Algorithm Steps:**\n1. For each node in the main tree, check if subtree starting there matches\n2. Use helper function to check if two trees are identical\n3. Recursively check:\n   - Current node matches AND\n   - Left subtrees match AND\n   - Right subtrees match\n4. If any node in main tree has matching subtree, return True\n\n**Key Insight:** We need to check every possible starting point in the main tree. For each node, we check if the subtree rooted there is identical to the target subtree.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def isSubtree(self, root, subRoot):\n    if not subRoot:\n        return True\n    if not root:\n        return False\n    if self.isSameTree(root, subRoot):\n        return True\n    return (self.isSubtree(root.left, subRoot) or \n            self.isSubtree(root.right, subRoot))\n\ndef isSameTree(self, p, q):\n    if not p and not q:\n        return True\n    if not p or not q or p.val != q.val:\n        return False\n    return (self.isSameTree(p.left, q.left) and \n            self.isSameTree(p.right, q.right))"
+  },
+  "construct-binary-tree-from-preorder-and-inorder-traversal": {
+    "approach": "Problem Solving",
+    "explanation": "Build a binary tree from preorder and inorder traversal arrays.\n\n**Algorithm Steps:**\n1. First element of preorder is always the root\n2. Find root's position in inorder array\n3. Elements before root in inorder are left subtree\n4. Elements after root in inorder are right subtree\n5. Recursively build left and right subtrees using corresponding preorder segments\n6. Return the constructed tree\n\n**Key Insight:** Preorder gives us roots, inorder gives us left/right division. By finding the root in inorder, we can split both arrays and recursively build subtrees.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def buildTree(self, preorder, inorder):\n    if not preorder or not inorder:\n        return None\n    root_val = preorder[0]\n    root = TreeNode(root_val)\n    root_index = inorder.index(root_val)\n    root.left = self.buildTree(preorder[1:1+root_index], inorder[:root_index])\n    root.right = self.buildTree(preorder[1+root_index:], inorder[root_index+1:])\n    return root"
+  },
+  "validate-binary-search-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Check if a binary tree is a valid BST (left < node < right for all nodes).\n\n**Algorithm Steps:**\n1. Use DFS with min and max bounds\n2. For each node, check if its value is within bounds\n3. Recursively validate:\n   - Left subtree: new max = current node value\n   - Right subtree: new min = current node value\n4. If any node violates bounds, return False\n5. If all nodes valid, return True\n\n**Key Insight:** A BST property must hold at every node. By passing down min/max bounds, we ensure each node's value is in the correct range relative to its ancestors.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def isValidBST(self, root):\n    def validate(node, min_val, max_val):\n        if not node:\n            return True\n        if node.val <= min_val or node.val >= max_val:\n            return False\n        return (validate(node.left, min_val, node.val) and \n                validate(node.right, node.val, max_val))\n    return validate(root, float('-inf'), float('inf'))"
+  },
+  "kth-smallest-element-in-a-bst": {
+    "approach": "Problem Solving",
+    "explanation": "Find the kth smallest element in a BST.\n\n**Algorithm Steps:**\n1. Use in-order traversal (left \u2192 root \u2192 right)\n2. In-order traversal of BST visits nodes in sorted order\n3. Count nodes as we visit them\n4. When count reaches k, return that node's value\n5. Can be done iteratively with a stack or recursively\n\n**Key Insight:** In-order traversal of a BST naturally produces sorted order. The kth node visited is the kth smallest element.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def kthSmallest(self, root, k):\n    stack = []\n    while True:\n        while root:\n            stack.append(root)\n            root = root.left\n        root = stack.pop()\n        k -= 1\n        if k == 0:\n            return root.val\n        root = root.right"
+  },
+  "lowest-common-ancestor-of-a-binary-search-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Find the lowest common ancestor of two nodes in a BST.\n\n**Algorithm Steps:**\n1. Start from root\n2. If both p and q are less than current node, go left\n3. If both p and q are greater than current node, go right\n4. Otherwise, current node is the LCA (they split here)\n5. Return the node where paths diverge\n\n**Key Insight:** In a BST, if both nodes are on the same side of a node, the LCA is deeper. When they're on different sides (or one is the current node), we've found the LCA.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def lowestCommonAncestor(self, root, p, q):\n    while root:\n        if p.val < root.val and q.val < root.val:\n            root = root.left\n        elif p.val > root.val and q.val > root.val:\n            root = root.right\n        else:\n            return root"
+  },
+  "implement-trie-prefix-tree": {
+    "approach": "Problem Solving",
+    "explanation": "Implement a Trie (prefix tree) data structure.\n\n**Algorithm Steps:**\n1. Each node has:\n   - Dictionary of children (char \u2192 child node)\n   - Boolean flag indicating end of word\n2. Insert: Traverse/create path for each character, mark end\n3. Search: Traverse path, check if end flag is True\n4. StartsWith: Traverse path, don't need to check end flag\n\n**Key Insight:** Tries are perfect for prefix matching. Each path from root represents a prefix. By sharing common prefixes, we save space and enable efficient prefix queries.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "class Trie:\n    def __init__(self):\n        self.children = {}\n        self.is_end = False\n\n    def insert(self, word):\n        node = self\n        for char in word:\n            if char not in node.children:\n                node.children[char] = Trie()\n            node = node.children[char]\n        node.is_end = True\n\n    def search(self, word):\n        node = self\n        for char in word:\n            if char not in node.children:\n                return False\n            node = node.children[char]\n        return node.is_end\n\n    def startsWith(self, prefix):\n        node = self\n        for char in prefix:\n            if char not in node.children:\n                return False\n            node = node.children[char]\n        return True"
+  },
+  "add-and-search-word-data-structure-design": {
+    "approach": "Problem Solving",
+    "explanation": "Design a data structure that supports adding and searching words with wildcard '.'.\n\n**Algorithm Steps:**\n1. Use Trie structure similar to Implement Trie\n2. Insert: Same as regular Trie - add word character by character\n3. Search: Use DFS when encountering '.' wildcard\n4. For '.', try all possible children recursively\n5. For regular character, follow normal Trie path\n6. Return True if any path leads to end of word\n\n**Key Insight:** The wildcard '.' requires exploring all possible paths. We use DFS to try all children when we encounter a wildcard, making this a backtracking problem.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "class WordDictionary:\n    def __init__(self):\n        self.children = {}\n        self.is_end = False\n\n    def addWord(self, word):\n        node = self\n        for char in word:\n            if char not in node.children:\n                node.children[char] = WordDictionary()\n            node = node.children[char]\n        node.is_end = True\n\n    def search(self, word):\n        def dfs(node, index):\n            if index == len(word):\n                return node.is_end\n            char = word[index]\n            if char == '.':\n                for child in node.children.values():\n                    if dfs(child, index + 1):\n                        return True\n                return False\n            else:\n                if char not in node.children:\n                    return False\n                return dfs(node.children[char], index + 1)\n        return dfs(self, 0)"
+  },
+  "word-search-ii": {
+    "approach": "Problem Solving",
+    "explanation": "Find all words from a dictionary that exist in a 2D grid.\n\n**Algorithm Steps:**\n1. Build a Trie from the dictionary words\n2. For each cell in grid, start DFS\n3. During DFS, check if current path matches any word in Trie\n4. When a word is found, add to results and continue (might be prefix of longer word)\n5. Use backtracking to explore all paths\n6. Optimize: remove found words from Trie to avoid duplicates\n\n**Key Insight:** Using a Trie allows us to check multiple words simultaneously. As we traverse the grid, we traverse the Trie, checking if current path matches any word prefix.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def findWords(self, board, words):\n    trie = {}\n    for word in words:\n        node = trie\n        for char in word:\n            node = node.setdefault(char, {})\n        node['#'] = word\n    result = []\n    def dfs(i, j, node):\n        char = board[i][j]\n        curr_node = node[char]\n        word_match = curr_node.pop('#', False)\n        if word_match:\n            result.append(word_match)\n        board[i][j] = '#'\n        for di, dj in [(0,1), (0,-1), (1,0), (-1,0)]:\n            ni, nj = i + di, j + dj\n            if 0 <= ni < len(board) and 0 <= nj < len(board[0]) and board[ni][nj] in curr_node:\n                dfs(ni, nj, curr_node)\n        board[i][j] = char\n        if not curr_node:\n            node.pop(char)\n    for i in range(len(board)):\n        for j in range(len(board[0])):\n            if board[i][j] in trie:\n                dfs(i, j, trie)\n    return result"
+  },
+  "top-k-frequent-elements": {
+    "approach": "Problem Solving",
+    "explanation": "Find k most frequent elements in array.\n\n**Algorithm Steps:**\n1. Count frequency of each element using hash map\n2. Use min-heap (size k) to track top k frequencies\n3. For each element, add to heap\n4. If heap size > k, remove smallest (maintain k largest)\n5. Return elements in heap\n\n**Key Insight:** Min-heap of size k keeps the k largest frequencies. When heap exceeds k, we remove the smallest, ensuring we keep only the top k.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "def topKFrequent(self, nums, k):\n    from collections import Counter\n    import heapq\n    count = Counter(nums)\n    return heapq.nlargest(k, count.keys(), key=count.get)"
+  },
+  "find-median-from-data-stream": {
+    "approach": "Problem Solving",
+    "explanation": "Design data structure to find median of stream of numbers.\n\n**Algorithm Steps:**\n1. Use two heaps: max-heap for smaller half, min-heap for larger half\n2. Maintain balance: |max_heap| - |min_heap| <= 1\n3. Add number: Insert into appropriate heap, rebalance if needed\n4. Find median:\n   - If heaps equal size: average of both tops\n   - Else: top of larger heap\n\n**Key Insight:** Two heaps maintain the sorted order's middle. Max-heap holds smaller half, min-heap holds larger half. The median is always at the boundary.",
+    "pattern": "General",
+    "hint_sequence": [
+      "Understand the input and expected output",
+      "Think about edge cases",
+      "Consider brute force first, then optimize"
+    ],
+    "code_template": "class MedianFinder:\n    def __init__(self):\n        self.small = []\n        self.large = []\n\n    def addNum(self, num):\n        import heapq\n        heapq.heappush(self.small, -num)\n        if self.small and self.large and -self.small[0] > self.large[0]:\n            val = -heapq.heappop(self.small)\n            heapq.heappush(self.large, val)\n        if len(self.small) > len(self.large) + 1:\n            val = -heapq.heappop(self.small)\n            heapq.heappush(self.large, val)\n        elif len(self.large) > len(self.small) + 1:\n            val = heapq.heappop(self.large)\n            heapq.heappush(self.small, -val)\n\n    def findMedian(self):\n        import heapq\n        if len(self.small) > len(self.large):\n            return -self.small[0]\n        elif len(self.large) > len(self.small):\n            return self.large[0]\n        else:\n            return (-self.small[0] + self.large[0]) / 2"
+  },
+  "add_two_numbers": {
+    "approach": "Linked List Traversal",
+    "explanation": "This problem requires adding two numbers represented as linked lists where digits are stored in reverse order.\n\n**Algorithm Steps:**\n1. Create a dummy node to simplify edge cases and track the result list\n2. Initialize a carry variable to 0\n3. Traverse both lists simultaneously:\n   - Extract the current digit from each list (or 0 if list is exhausted)\n   - Calculate the sum: digit1 + digit2 + carry\n   - Store the ones place (sum % 10) in a new node\n   - Update carry to the tens place (sum // 10)\n4. Move to the next nodes in both lists\n5. Continue until both lists are exhausted AND carry is 0\n\n**Key Insight:** The dummy node pattern eliminates the need to handle the first node separately. The carry ensures we properly handle cases where the sum exceeds 9, propagating to the next digit position.",
+    "pattern": "Linked List",
+    "time_complexity": "O(max(m,n))",
+    "space_complexity": "O(max(m,n))",
+    "key_insight": "Use a dummy node to simplify edge cases and track carry",
+    "hint_sequence": [
+      "Initialize a dummy node and track carry",
+      "Traverse both lists, adding values with carry",
+      "Handle remaining carry after traversal"
+    ],
+    "code_template": "\ndef addTwoNumbers(self, l1, l2):\n    dummy = ListNode(0)\n    current = dummy\n    carry = 0\n    \n    while l1 or l2 or carry:\n        val1 = l1.val if l1 else 0\n        val2 = l2.val if l2 else 0\n        \n        total = val1 + val2 + carry\n        carry = total // 10\n        current.next = ListNode(total % 10)\n        \n        current = current.next\n        l1 = l1.next if l1 else None\n        l2 = l2.next if l2 else None\n    \n    return dummy.next\n"
+  },
+  "valid_palindrome": {
+    "approach": "Two Pointers",
+    "explanation": "Solve this Two Pointers, String problem using the Two Pointers approach.\n\n**Algorithm Steps:**\n1. Understand the problem requirements and constraints\n2. Identify the appropriate data structures and algorithms\n3. Break down the problem into smaller subproblems\n4. Implement the solution step by step\n5. Handle edge cases and optimize if needed\n\n**Key Insight:** This problem requires careful analysis of the Two Pointers, String pattern. Consider the time and space complexity trade-offs when designing your solution.",
+    "pattern": "Two Pointers, String",
+    "time_complexity": "O(n)",
+    "key_insight": "Ignore non-alphanumeric and compare case-insensitive",
+    "hint_sequence": [
+      "Filter non-alphanumeric characters",
+      "Use two pointers from both ends",
+      "Compare characters case-insensitively"
+    ],
+    "code_template": "\ndef isPalindrome(self, s):\n    left, right = 0, len(s) - 1\n    \n    while left < right:\n        while left < right and not s[left].isalnum():\n            left += 1\n        while left < right and not s[right].isalnum():\n            right -= 1\n        \n        if s[left].lower() != s[right].lower():\n            return False\n        \n        left += 1\n        right -= 1\n    \n    return True\n"
+  },
+  "move_zeroes": {
+    "approach": "Two Pointers",
+    "explanation": "Move all zeros to the end while maintaining relative order of non-zero elements.\n\n**Algorithm Steps:**\n1. Use two pointers: left (next position for non-zero) and right (current element)\n2. When right finds a non-zero element, swap with left\n3. Increment left pointer\n4. Continue until right reaches the end\n\n**Key Insight:** This is an in-place operation using the two-pointer technique. Left tracks where the next non-zero should go, right finds non-zero elements.",
+    "pattern": "Array, Two Pointers",
+    "time_complexity": "O(n)",
+    "key_insight": "Use a pointer to track position of next non-zero",
+    "hint_sequence": [
+      "Keep a pointer for next non-zero position",
+      "Move non-zero elements forward",
+      "Fill remaining positions with zeros"
+    ],
+    "code_template": "\ndef moveZeroes(self, nums):\n    left = 0\n    \n    for right in range(len(nums)):\n        if nums[right] != 0:\n            nums[left], nums[right] = nums[right], nums[left]\n            left += 1\n    \n    return nums\n"
+  }
+}

@@ -1,0 +1,61 @@
+/* Resize Handles - Modern Design */
+.resize-handle {
+    position: absolute;
+    background: transparent;
+    z-index: 10;
+    cursor: ns-resize;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resize-handle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 3px;
+    background: var(--border-light);
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+.resize-handle:hover::after {
+    background: var(--primary-color);
+    width: 60px;
+    height: 4px;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.resize-handle-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+}
+
+.resize-handle-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+}
+
+.resize-handle-left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    cursor: ew-resize; /* Horizontal resize cursor */
+}
+
+.resize-handle-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    cursor: ew-resize; /* Horizontal resize cursor */
+}
+
+/* Sidebar resize handle - handled by JavaScript */
+

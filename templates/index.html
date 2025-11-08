@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Blind 75 IDE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resize.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎯 LeetCode Blind 75 IDE</h1>
+            <p class="subtitle">Learn with AI-powered hints</p>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar: Question List -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Questions</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="easy">Easy</button>
+                        <button class="filter-btn" data-filter="medium">Medium</button>
+                        <button class="filter-btn" data-filter="hard">Hard</button>
+                    </div>
+                </div>
+                <div class="question-list" id="questionList">
+                    <!-- Questions will be loaded here -->
+                    <div class="loading">Loading questions...</div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Question Panel -->
+                <div class="question-panel" id="questionPanel">
+                    <div class="resize-handle resize-handle-bottom" data-target="questionPanel"></div>
+                    <div class="empty-state" id="emptyState">
+                        <p>Select a question from the sidebar to get started</p>
+                    </div>
+                </div>
+
+                <!-- Code Editor -->
+                <div class="editor-panel" id="editorPanel">
+                    <div class="resize-handle resize-handle-top" data-target="editorPanel"></div>
+                    <div class="resize-handle resize-handle-bottom" data-target="editorPanel"></div>
+                    <div class="editor-header">
+                        <div class="editor-header-left">
+                            <h3>Code Editor</h3>
+                            <button class="copy-code-btn" id="copyCodeBtn" title="Copy Code (Ctrl+Shift+C)">
+                                📋 Copy Code
+                            </button>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="btn btn-hint" id="hintBtn" disabled title="Get Hint (Ctrl+H)">
+                                💡 Get Hint
+                            </button>
+                            <button class="btn btn-compile" id="compileBtn" disabled title="Execute Code (Ctrl+E)">
+                                ⚡ Execute Code
+                            </button>
+                            <button class="btn btn-run" id="runBtn" disabled title="Run Tests (Ctrl+Enter)">
+                                ▶️ Run Tests
+                            </button>
+                            <button class="btn btn-reset" id="resetBtn" disabled title="Reset Code (Ctrl+R)">
+                                🔄 Reset
+                            </button>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="codeEditor"></textarea>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="results-panel" id="resultsPanel">
+                    <div class="resize-handle resize-handle-top" data-target="resultsPanel"></div>
+                    <div class="results-header">
+                        <h3>Test Results</h3>
+                        <button class="btn btn-clear" id="clearResultsBtn">Clear</button>
+                    </div>
+                    <div class="results-content" id="resultsContent">
+                        <p class="placeholder">Run your code to see test results here.</p>
+                    </div>
+                </div>
+
+                <!-- Hint Panel -->
+                <div class="hint-panel" id="hintPanel">
+                    <div class="hint-header">
+                        <h3>💡 Hints</h3>
+                        <button class="btn btn-close" id="closeHintBtn">×</button>
+                    </div>
+                    <div class="hint-content" id="hintContent">
+                        <p class="placeholder">Click "Get Hint" to receive AI-powered hints!</p>
+                    </div>
+                    <div class="hint-actions">
+                        <button class="btn btn-hint-small" data-hint-type="general">General Hint</button>
+                        <button class="btn btn-hint-small" data-hint-type="specific">Specific Hint</button>
+                        <button class="btn btn-hint-small" data-hint-type="next_step">Next Step</button>
+                        <button class="btn btn-hint-small btn-solution" id="showSolutionBtn" title="View the complete solution code">
+                            💻 Show Solution
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="{{ url_for('static', filename='js/resize.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}?v={{ range(1000, 9999) | random }}"></script>
+    
+    <!-- EMERGENCY DIAGNOSTIC AND FIX -->
+    <script>
+        (function() {
+            console.log('🚨 EMERGENCY DIAGNOSTIC RUNNING');
+            console.log('Page loaded at:', new Date().toLocaleTimeString());
+            
+            // Wait for DOM
+            setTimeout(function() {
+                console.log('🔍 Checking state...');
+                const questionList = document.getElementById('questionList');
+                
+                if (!questionList) {
+                    console.error('❌ FATAL: questionList element NOT FOUND');
+                    document.body.innerHTML = '<h1 style="color:red">ERROR: questionList element not found!</h1>';
+                    return;
+                }
+                
+                console.log('✓ questionList element found');
+                console.log('Current HTML:', questionList.innerHTML.substring(0, 100));
+                
+                // Check if questions variable exists
+                if (typeof window.questions !== 'undefined' && window.questions && Object.keys(window.questions).length > 0) {
+                    console.log('✅ Questions already loaded:', Object.keys(window.questions).length);
+                    return;
+                }
+                
+                console.log('⚠️ Questions NOT loaded, fetching now...');
+                questionList.innerHTML = '<div class="loading">🔄 Emergency fetch in progress...</div>';
+                
+                // Force fetch questions
+                fetch('/api/questions')
+                    .then(response => {
+                        console.log('📡 Response:', response.status, response.statusText);
+                        if (!response.ok) throw new Error('HTTP ' + response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('✅ SUCCESS! Received', Object.keys(data).length, 'questions');
+                        window.questions = data;
+                        
+                        // Manually render questions
+                        const questionsArray = Object.values(data);
+                        const html = questionsArray.sort((a, b) => (a.title || '').localeCompare(b.title || ''))
+                            .map(q => `
+                                <div class="question-item" onclick="selectQuestion('${q.id}')">
+                                    <div class="question-item-title">${q.title || q.id}</div>
+                                    <div class="question-item-meta">
+                                        <span class="badge badge-${(q.difficulty || 'unknown').toLowerCase()}">${q.difficulty || 'Unknown'}</span>
+                                        <span>${q.category || 'Uncategorized'}</span>
+                                    </div>
+                                </div>
+                            `).join('');
+                        
+                        questionList.innerHTML = html;
+                        console.log('✅ Questions rendered! HTML length:', html.length);
+                    })
+                    .catch(error => {
+                        console.error('❌ FETCH FAILED:', error);
+                        questionList.innerHTML = `
+                            <div class="loading" style="color:red">
+                                ❌ Failed to load questions:<br>
+                                ${error.message}<br>
+                                <button onclick="location.reload()">Retry</button>
+                            </div>
+                        `;
+                    });
+            }, 500);
+        })();
+    </script>
+</body>
+</html>
+

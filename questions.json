@@ -1,0 +1,4248 @@
+{
+  "valid_palindrome": {
+    "id": "valid_palindrome",
+    "title": "Valid Palindrome",
+    "leetcode_number": 125,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 125: Valid Palindrome. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Palindrome"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Palindrome"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isPalindrome(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "remove_duplicates_sorted": {
+    "id": "remove_duplicates_sorted",
+    "title": "Remove Duplicates from Sorted Array",
+    "leetcode_number": 26,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 26: Remove Duplicates from Sorted Array. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Remove Duplicates from Sorted Array"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Remove Duplicates from Sorted Array"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def removeDuplicates(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "move_zeroes": {
+    "id": "move_zeroes",
+    "title": "Move Zeroes",
+    "leetcode_number": 283,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 283: Move Zeroes. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Move Zeroes"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Move Zeroes"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def moveZeroes(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "merge_two_sorted_lists": {
+    "id": "merge_two_sorted_lists",
+    "title": "Merge Two Sorted Lists",
+    "leetcode_number": 21,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 21: Merge Two Sorted Lists. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "list1": "test",
+          "list2": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Merge Two Sorted Lists"
+      },
+      {
+        "input": {
+          "list1": "example",
+          "list2": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Merge Two Sorted Lists"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def mergeTwoLists(self, list1, list2):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "list1": "test",
+          "list2": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "list1": "example",
+          "list2": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "intersection_two_linked_lists": {
+    "id": "intersection_two_linked_lists",
+    "title": "Intersection of Two Linked Lists",
+    "leetcode_number": 160,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 160: Intersection of Two Linked Lists. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "headA": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "headB": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Intersection of Two Linked Lists"
+      },
+      {
+        "input": {
+          "headA": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "headB": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Intersection of Two Linked Lists"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def getIntersectionNode(self, headA, headB):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "headA": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "headB": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "headA": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "headB": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "reverse_linked_list": {
+    "id": "reverse_linked_list",
+    "title": "Reverse Linked List",
+    "leetcode_number": 206,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 206: Reverse Linked List. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Reverse Linked List"
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Reverse Linked List"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def reverseList(self, head):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "linked_list_cycle": {
+    "id": "linked_list_cycle",
+    "title": "Linked List Cycle",
+    "leetcode_number": 141,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 141: Linked List Cycle. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Linked List Cycle"
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Linked List Cycle"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def hasCycle(self, head):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "two_sum": {
+    "id": "two_sum",
+    "title": "Two Sum",
+    "leetcode_number": 1,
+    "difficulty": "Easy",
+    "category": "Hash Table",
+    "description": "LeetCode 1: Two Sum. This is a Easy problem in the Hash Table category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Two Sum"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Two Sum"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def twoSum(self, nums, target):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Table patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "contains_duplicate": {
+    "id": "contains_duplicate",
+    "title": "Contains Duplicate",
+    "leetcode_number": 217,
+    "difficulty": "Easy",
+    "category": "Hash Set",
+    "description": "LeetCode 217: Contains Duplicate. This is a Easy problem in the Hash Set category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Contains Duplicate"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Contains Duplicate"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def containsDuplicate(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Set patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "valid_anagram": {
+    "id": "valid_anagram",
+    "title": "Valid Anagram",
+    "leetcode_number": 242,
+    "difficulty": "Easy",
+    "category": "Hash Table",
+    "description": "LeetCode 242: Valid Anagram. This is a Easy problem in the Hash Table category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test",
+          "t": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Anagram"
+      },
+      {
+        "input": {
+          "s": "example",
+          "t": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Anagram"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isAnagram(self, s, t):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test",
+          "t": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example",
+          "t": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Table patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "first_unique_character": {
+    "id": "first_unique_character",
+    "title": "First Unique Character in a String",
+    "leetcode_number": 387,
+    "difficulty": "Easy",
+    "category": "Hash Table",
+    "description": "LeetCode 387: First Unique Character in a String. This is a Easy problem in the Hash Table category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for First Unique Character in a String"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for First Unique Character in a String"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def firstUniqChar(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Table patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "maximum_subarray": {
+    "id": "maximum_subarray",
+    "title": "Maximum Subarray",
+    "leetcode_number": 53,
+    "difficulty": "Easy",
+    "category": "DP",
+    "description": "LeetCode 53: Maximum Subarray. This is a Easy problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Maximum Subarray"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Maximum Subarray"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def maxSubArray(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "best_time_to_buy_sell_stock": {
+    "id": "best_time_to_buy_sell_stock",
+    "title": "Best Time to Buy and Sell Stock",
+    "leetcode_number": 121,
+    "difficulty": "Easy",
+    "category": "Two Pointers",
+    "description": "LeetCode 121: Best Time to Buy and Sell Stock. This is a Easy problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "prices": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Best Time to Buy and Sell Stock"
+      },
+      {
+        "input": {
+          "prices": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Best Time to Buy and Sell Stock"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def maxProfit(self, prices):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "prices": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "prices": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "missing_number": {
+    "id": "missing_number",
+    "title": "Missing Number",
+    "leetcode_number": 268,
+    "difficulty": "Easy",
+    "category": "Math/BitManip",
+    "description": "LeetCode 268: Missing Number. This is a Easy problem in the Math/BitManip category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Missing Number"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Missing Number"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def missingNumber(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Math/BitManip patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "valid_parentheses": {
+    "id": "valid_parentheses",
+    "title": "Valid Parentheses",
+    "leetcode_number": 20,
+    "difficulty": "Easy",
+    "category": "Stack",
+    "description": "LeetCode 20: Valid Parentheses. This is a Easy problem in the Stack category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Parentheses"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Parentheses"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isValid(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Stack patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "max_depth_binary_tree": {
+    "id": "max_depth_binary_tree",
+    "title": "Maximum Depth of Binary Tree",
+    "leetcode_number": 104,
+    "difficulty": "Easy",
+    "category": "DFS, Tree",
+    "description": "LeetCode 104: Maximum Depth of Binary Tree. This is a Easy problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Maximum Depth of Binary Tree"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Maximum Depth of Binary Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def maxDepth(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "same_tree": {
+    "id": "same_tree",
+    "title": "Same Tree",
+    "leetcode_number": 100,
+    "difficulty": "Easy",
+    "category": "DFS, Tree",
+    "description": "LeetCode 100: Same Tree. This is a Easy problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "p": null,
+          "q": null
+        },
+        "output": null,
+        "explanation": "Example test case for Same Tree"
+      },
+      {
+        "input": {
+          "p": null,
+          "q": null
+        },
+        "output": null,
+        "explanation": "Example test case for Same Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isSameTree(self, p, q):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "p": null,
+          "q": null
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "p": null,
+          "q": null
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "symmetric_tree": {
+    "id": "symmetric_tree",
+    "title": "Symmetric Tree",
+    "leetcode_number": 101,
+    "difficulty": "Easy",
+    "category": "DFS/BFS, Tree",
+    "description": "LeetCode 101: Symmetric Tree. This is a Easy problem in the DFS/BFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Symmetric Tree"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Symmetric Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isSymmetric(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS/BFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "invert_binary_tree": {
+    "id": "invert_binary_tree",
+    "title": "Invert Binary Tree",
+    "leetcode_number": 226,
+    "difficulty": "Easy",
+    "category": "DFS/BFS, Tree",
+    "description": "LeetCode 226: Invert Binary Tree. This is a Easy problem in the DFS/BFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Invert Binary Tree"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Invert Binary Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def invertTree(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS/BFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "subtree_of_another_tree": {
+    "id": "subtree_of_another_tree",
+    "title": "Subtree of Another Tree",
+    "leetcode_number": 572,
+    "difficulty": "Easy",
+    "category": "DFS/BFS, Tree",
+    "description": "LeetCode 572: Subtree of Another Tree. This is a Easy problem in the DFS/BFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test",
+          "subRoot": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Subtree of Another Tree"
+      },
+      {
+        "input": {
+          "root": "example",
+          "subRoot": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Subtree of Another Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isSubtree(self, root, subRoot):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test",
+          "subRoot": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example",
+          "subRoot": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS/BFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "lowest_common_ancestor_bst": {
+    "id": "lowest_common_ancestor_bst",
+    "title": "Lowest Common Ancestor of a Binary Search Tree",
+    "leetcode_number": 235,
+    "difficulty": "Easy",
+    "category": "DFS, Tree",
+    "description": "LeetCode 235: Lowest Common Ancestor of a Binary Search Tree. This is a Easy problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test",
+          "p": null,
+          "q": null
+        },
+        "output": null,
+        "explanation": "Example test case for Lowest Common Ancestor of a Binary Search Tree"
+      },
+      {
+        "input": {
+          "root": "example",
+          "p": null,
+          "q": null
+        },
+        "output": null,
+        "explanation": "Example test case for Lowest Common Ancestor of a Binary Search Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def lowestCommonAncestor(self, root, p, q):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test",
+          "p": null,
+          "q": null
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example",
+          "p": null,
+          "q": null
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "remove_nth_node_end": {
+    "id": "remove_nth_node_end",
+    "title": "Remove Nth Node From End of List",
+    "leetcode_number": 19,
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "LeetCode 19: Remove Nth Node From End of List. This is a Medium problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "n": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Remove Nth Node From End of List"
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "n": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Remove Nth Node From End of List"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def removeNthFromEnd(self, head, n):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "n": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "n": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "two_sum_ii_sorted": {
+    "id": "two_sum_ii_sorted",
+    "title": "Two Sum II - Input Array Is Sorted",
+    "leetcode_number": 167,
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "LeetCode 167: Two Sum II - Input Array Is Sorted. This is a Medium problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Two Sum II - Input Array Is Sorted"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Two Sum II - Input Array Is Sorted"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def twoSum(self, nums, target):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "3sum": {
+    "id": "3sum",
+    "title": "3Sum",
+    "leetcode_number": 15,
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "LeetCode 15: 3Sum. This is a Medium problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for 3Sum"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for 3Sum"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def threeSum(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "longest_substring_no_repeat": {
+    "id": "longest_substring_no_repeat",
+    "title": "Longest Substring Without Repeating Characters",
+    "leetcode_number": 3,
+    "difficulty": "Medium",
+    "category": "Sliding Window",
+    "description": "LeetCode 3: Longest Substring Without Repeating Characters. This is a Medium problem in the Sliding Window category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Substring Without Repeating Characters"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Substring Without Repeating Characters"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def lengthOfLongestSubstring(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Sliding Window patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "container_with_most_water": {
+    "id": "container_with_most_water",
+    "title": "Container With Most Water",
+    "leetcode_number": 11,
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "LeetCode 11: Container With Most Water. This is a Medium problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "height": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Container With Most Water"
+      },
+      {
+        "input": {
+          "height": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Container With Most Water"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def maxArea(self, height):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "height": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "height": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "longest_repeating_char_replace": {
+    "id": "longest_repeating_char_replace",
+    "title": "Longest Repeating Character Replacement",
+    "leetcode_number": 424,
+    "difficulty": "Medium",
+    "category": "Sliding Window",
+    "description": "LeetCode 424: Longest Repeating Character Replacement. This is a Medium problem in the Sliding Window category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test",
+          "k": 2
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Repeating Character Replacement"
+      },
+      {
+        "input": {
+          "s": "example",
+          "k": 3
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Repeating Character Replacement"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def characterReplacement(self, s, k):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test",
+          "k": 2
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example",
+          "k": 3
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Sliding Window patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "linked_list_cycle_ii": {
+    "id": "linked_list_cycle_ii",
+    "title": "Linked List Cycle II",
+    "leetcode_number": 142,
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "LeetCode 142: Linked List Cycle II. This is a Medium problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Linked List Cycle II"
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Linked List Cycle II"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def detectCycle(self, head):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "group_anagrams": {
+    "id": "group_anagrams",
+    "title": "Group Anagrams",
+    "leetcode_number": 49,
+    "difficulty": "Medium",
+    "category": "Hash Table",
+    "description": "LeetCode 49: Group Anagrams. This is a Medium problem in the Hash Table category.",
+    "examples": [
+      {
+        "input": {
+          "strs": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Group Anagrams"
+      },
+      {
+        "input": {
+          "strs": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Group Anagrams"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def groupAnagrams(self, strs):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "strs": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "strs": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Table patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "valid_sudoku": {
+    "id": "valid_sudoku",
+    "title": "Valid Sudoku",
+    "leetcode_number": 36,
+    "difficulty": "Medium",
+    "category": "Hash Table",
+    "description": "LeetCode 36: Valid Sudoku. This is a Medium problem in the Hash Table category.",
+    "examples": [
+      {
+        "input": {
+          "board": null
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Sudoku"
+      },
+      {
+        "input": {
+          "board": null
+        },
+        "output": null,
+        "explanation": "Example test case for Valid Sudoku"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isValidSudoku(self, board):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "board": null
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "board": null
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Table patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "subarray_sum_equals_k": {
+    "id": "subarray_sum_equals_k",
+    "title": "Subarray Sum Equals K",
+    "leetcode_number": 560,
+    "difficulty": "Medium",
+    "category": "Hash Map/PSum",
+    "description": "LeetCode 560: Subarray Sum Equals K. This is a Medium problem in the Hash Map/PSum category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "k": 2
+        },
+        "output": null,
+        "explanation": "Example test case for Subarray Sum Equals K"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "k": 3
+        },
+        "output": null,
+        "explanation": "Example test case for Subarray Sum Equals K"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def subarraySum(self, nums, k):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "k": 2
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "k": 3
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Hash Map/PSum patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "minimum_window_substring": {
+    "id": "minimum_window_substring",
+    "title": "Minimum Window Substring",
+    "leetcode_number": 76,
+    "difficulty": "Medium",
+    "category": "Sliding Window",
+    "description": "LeetCode 76: Minimum Window Substring. This is a Medium problem in the Sliding Window category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test",
+          "t": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Minimum Window Substring"
+      },
+      {
+        "input": {
+          "s": "example",
+          "t": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Minimum Window Substring"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def minWindow(self, s, t):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test",
+          "t": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example",
+          "t": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Sliding Window patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "min_stack": {
+    "id": "min_stack",
+    "title": "Min Stack",
+    "leetcode_number": 155,
+    "difficulty": "Medium",
+    "category": "Stack, Design",
+    "description": "LeetCode 155: Min Stack. This is a Medium problem in the Stack, Design category.",
+    "examples": [],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def MinStack(self):\n        # Your code here\n        pass",
+    "test_cases": [],
+    "hints": [
+      "Think about Stack, Design patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "evaluate_reverse_polish_notation": {
+    "id": "evaluate_reverse_polish_notation",
+    "title": "Evaluate Reverse Polish Notation",
+    "leetcode_number": 150,
+    "difficulty": "Medium",
+    "category": "Stack",
+    "description": "LeetCode 150: Evaluate Reverse Polish Notation. This is a Medium problem in the Stack category.",
+    "examples": [
+      {
+        "input": {
+          "tokens": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Evaluate Reverse Polish Notation"
+      },
+      {
+        "input": {
+          "tokens": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Evaluate Reverse Polish Notation"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def evalRPN(self, tokens):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "tokens": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "tokens": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Stack patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "daily_temperatures": {
+    "id": "daily_temperatures",
+    "title": "Daily Temperatures",
+    "leetcode_number": 739,
+    "difficulty": "Medium",
+    "category": "Monotonic Stack",
+    "description": "LeetCode 739: Daily Temperatures. This is a Medium problem in the Monotonic Stack category.",
+    "examples": [
+      {
+        "input": {
+          "temperatures": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Daily Temperatures"
+      },
+      {
+        "input": {
+          "temperatures": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Daily Temperatures"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def dailyTemperatures(self, temperatures):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "temperatures": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "temperatures": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Monotonic Stack patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "binary_search": {
+    "id": "binary_search",
+    "title": "Binary Search",
+    "leetcode_number": 704,
+    "difficulty": "Medium",
+    "category": "Binary Search",
+    "description": "LeetCode 704: Binary Search. This is a Medium problem in the Binary Search category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Binary Search"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Binary Search"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def search(self, nums, target):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Binary Search patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "find_min_rotated_sorted_array": {
+    "id": "find_min_rotated_sorted_array",
+    "title": "Find Minimum in Rotated Sorted Array",
+    "leetcode_number": 153,
+    "difficulty": "Medium",
+    "category": "Binary Search",
+    "description": "LeetCode 153: Find Minimum in Rotated Sorted Array. This is a Medium problem in the Binary Search category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Find Minimum in Rotated Sorted Array"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Find Minimum in Rotated Sorted Array"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def findMin(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Binary Search patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "search_rotated_sorted_array": {
+    "id": "search_rotated_sorted_array",
+    "title": "Search in Rotated Sorted Array",
+    "leetcode_number": 33,
+    "difficulty": "Medium",
+    "category": "Binary Search",
+    "description": "LeetCode 33: Search in Rotated Sorted Array. This is a Medium problem in the Binary Search category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Search in Rotated Sorted Array"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Search in Rotated Sorted Array"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def search(self, nums, target):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ],
+          "target": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ],
+          "target": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Binary Search patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "kth_smallest_element_bst": {
+    "id": "kth_smallest_element_bst",
+    "title": "Kth Smallest Element in a BST",
+    "leetcode_number": 230,
+    "difficulty": "Medium",
+    "category": "Binary Search",
+    "description": "LeetCode 230: Kth Smallest Element in a BST. This is a Medium problem in the Binary Search category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test",
+          "k": 2
+        },
+        "output": null,
+        "explanation": "Example test case for Kth Smallest Element in a BST"
+      },
+      {
+        "input": {
+          "root": "example",
+          "k": 3
+        },
+        "output": null,
+        "explanation": "Example test case for Kth Smallest Element in a BST"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def kthSmallest(self, root, k):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test",
+          "k": 2
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example",
+          "k": 3
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Binary Search patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "add_two_numbers": {
+    "id": "add_two_numbers",
+    "title": "Add Two Numbers",
+    "leetcode_number": 2,
+    "difficulty": "Medium",
+    "category": "List/Math",
+    "description": "LeetCode 2: Add Two Numbers. This is a Medium problem in the List/Math category.",
+    "examples": [
+      {
+        "input": {
+          "l1": null,
+          "l2": null
+        },
+        "output": null,
+        "explanation": "Example test case for Add Two Numbers"
+      },
+      {
+        "input": {
+          "l1": null,
+          "l2": null
+        },
+        "output": null,
+        "explanation": "Example test case for Add Two Numbers"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def addTwoNumbers(self, l1, l2):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "l1": null,
+          "l2": null
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "l1": null,
+          "l2": null
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about List/Math patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "reorder_list": {
+    "id": "reorder_list",
+    "title": "Reorder List",
+    "leetcode_number": 143,
+    "difficulty": "Medium",
+    "category": "Two Pointers",
+    "description": "LeetCode 143: Reorder List. This is a Medium problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Reorder List"
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Reorder List"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def reorderList(self, head):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "head": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "validate_binary_search_tree": {
+    "id": "validate_binary_search_tree",
+    "title": "Validate Binary Search Tree",
+    "leetcode_number": 98,
+    "difficulty": "Medium",
+    "category": "DFS, Tree",
+    "description": "LeetCode 98: Validate Binary Search Tree. This is a Medium problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Validate Binary Search Tree"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Validate Binary Search Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def isValidBST(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "binary_tree_level_order_traversal": {
+    "id": "binary_tree_level_order_traversal",
+    "title": "Binary Tree Level Order Traversal",
+    "leetcode_number": 102,
+    "difficulty": "Medium",
+    "category": "BFS, Tree",
+    "description": "LeetCode 102: Binary Tree Level Order Traversal. This is a Medium problem in the BFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Binary Tree Level Order Traversal"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Binary Tree Level Order Traversal"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def levelOrder(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about BFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "construct_binary_tree_pre_inorder": {
+    "id": "construct_binary_tree_pre_inorder",
+    "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+    "leetcode_number": 105,
+    "difficulty": "Medium",
+    "category": "DFS, Tree",
+    "description": "LeetCode 105: Construct Binary Tree from Preorder and Inorder Traversal. This is a Medium problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "preorder": null,
+          "inorder": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Construct Binary Tree from Preorder and Inorder Traversal"
+      },
+      {
+        "input": {
+          "preorder": null,
+          "inorder": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Construct Binary Tree from Preorder and Inorder Traversal"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def buildTree(self, preorder, inorder):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "preorder": null,
+          "inorder": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "preorder": null,
+          "inorder": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "lowest_common_ancestor_binary_tree": {
+    "id": "lowest_common_ancestor_binary_tree",
+    "title": "Lowest Common Ancestor of a Binary Tree",
+    "leetcode_number": 236,
+    "difficulty": "Medium",
+    "category": "DFS, Tree",
+    "description": "LeetCode 236: Lowest Common Ancestor of a Binary Tree. This is a Medium problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test",
+          "p": null,
+          "q": null
+        },
+        "output": null,
+        "explanation": "Example test case for Lowest Common Ancestor of a Binary Tree"
+      },
+      {
+        "input": {
+          "root": "example",
+          "p": null,
+          "q": null
+        },
+        "output": null,
+        "explanation": "Example test case for Lowest Common Ancestor of a Binary Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def lowestCommonAncestor(self, root, p, q):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test",
+          "p": null,
+          "q": null
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example",
+          "p": null,
+          "q": null
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "number_of_islands": {
+    "id": "number_of_islands",
+    "title": "Number of Islands",
+    "leetcode_number": 200,
+    "difficulty": "Medium",
+    "category": "BFS/DFS, Graph",
+    "description": "LeetCode 200: Number of Islands. This is a Medium problem in the BFS/DFS, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Number of Islands"
+      },
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Number of Islands"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def numIslands(self, grid):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about BFS/DFS, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "clone_graph": {
+    "id": "clone_graph",
+    "title": "Clone Graph",
+    "leetcode_number": 133,
+    "difficulty": "Medium",
+    "category": "BFS/DFS, Graph",
+    "description": "LeetCode 133: Clone Graph. This is a Medium problem in the BFS/DFS, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "node": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Clone Graph"
+      },
+      {
+        "input": {
+          "node": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Clone Graph"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def cloneGraph(self, node):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "node": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "node": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about BFS/DFS, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "course_schedule": {
+    "id": "course_schedule",
+    "title": "Course Schedule",
+    "leetcode_number": 207,
+    "difficulty": "Medium",
+    "category": "TopoSort, Graph",
+    "description": "LeetCode 207: Course Schedule. This is a Medium problem in the TopoSort, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "numCourses": "test",
+          "prerequisites": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Course Schedule"
+      },
+      {
+        "input": {
+          "numCourses": "example",
+          "prerequisites": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Course Schedule"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def canFinish(self, numCourses, prerequisites):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "numCourses": "test",
+          "prerequisites": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "numCourses": "example",
+          "prerequisites": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about TopoSort, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "pacific_atlantic_water_flow": {
+    "id": "pacific_atlantic_water_flow",
+    "title": "Pacific Atlantic Water Flow",
+    "leetcode_number": 417,
+    "difficulty": "Medium",
+    "category": "BFS/DFS, Graph",
+    "description": "LeetCode 417: Pacific Atlantic Water Flow. This is a Medium problem in the BFS/DFS, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "heights": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Pacific Atlantic Water Flow"
+      },
+      {
+        "input": {
+          "heights": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Pacific Atlantic Water Flow"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def pacificAtlantic(self, heights):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "heights": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "heights": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about BFS/DFS, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "graph_valid_tree": {
+    "id": "graph_valid_tree",
+    "title": "Graph Valid Tree",
+    "leetcode_number": 261,
+    "difficulty": "Medium",
+    "category": "UnionFind, Graph",
+    "description": "LeetCode 261: Graph Valid Tree. This is a Medium problem in the UnionFind, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "n": 5,
+          "edges": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Graph Valid Tree"
+      },
+      {
+        "input": {
+          "n": 6,
+          "edges": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Graph Valid Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def validTree(self, n, edges):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "n": 5,
+          "edges": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "n": 6,
+          "edges": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about UnionFind, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "number_of_connected_components": {
+    "id": "number_of_connected_components",
+    "title": "Number of Connected Components in an Undirected Graph",
+    "leetcode_number": 323,
+    "difficulty": "Medium",
+    "category": "UnionFind, Graph",
+    "description": "LeetCode 323: Number of Connected Components in an Undirected Graph. This is a Medium problem in the UnionFind, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "n": 5,
+          "edges": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Number of Connected Components in an Undirected Graph"
+      },
+      {
+        "input": {
+          "n": 6,
+          "edges": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Number of Connected Components in an Undirected Graph"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def countComponents(self, n, edges):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "n": 5,
+          "edges": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "n": 6,
+          "edges": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about UnionFind, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "word_search": {
+    "id": "word_search",
+    "title": "Word Search",
+    "leetcode_number": 79,
+    "difficulty": "Medium",
+    "category": "Backtracking",
+    "description": "LeetCode 79: Word Search. This is a Medium problem in the Backtracking category.",
+    "examples": [
+      {
+        "input": {
+          "board": null,
+          "word": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Word Search"
+      },
+      {
+        "input": {
+          "board": null,
+          "word": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Word Search"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def exist(self, board, word):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "board": null,
+          "word": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "board": null,
+          "word": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Backtracking patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "combination_sum": {
+    "id": "combination_sum",
+    "title": "Combination Sum",
+    "leetcode_number": 39,
+    "difficulty": "Medium",
+    "category": "Backtracking",
+    "description": "LeetCode 39: Combination Sum. This is a Medium problem in the Backtracking category.",
+    "examples": [
+      {
+        "input": {
+          "candidates": "test",
+          "target": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Combination Sum"
+      },
+      {
+        "input": {
+          "candidates": "example",
+          "target": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Combination Sum"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def combinationSum(self, candidates, target):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "candidates": "test",
+          "target": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "candidates": "example",
+          "target": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Backtracking patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "subsets": {
+    "id": "subsets",
+    "title": "Subsets",
+    "leetcode_number": 78,
+    "difficulty": "Medium",
+    "category": "Backtracking",
+    "description": "LeetCode 78: Subsets. This is a Medium problem in the Backtracking category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Subsets"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Subsets"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def subsets(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Backtracking patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "permutations": {
+    "id": "permutations",
+    "title": "Permutations",
+    "leetcode_number": 46,
+    "difficulty": "Medium",
+    "category": "Backtracking",
+    "description": "LeetCode 46: Permutations. This is a Medium problem in the Backtracking category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Permutations"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Permutations"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def permute(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Backtracking patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "climbing_stairs": {
+    "id": "climbing_stairs",
+    "title": "Climbing Stairs",
+    "leetcode_number": 70,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 70: Climbing Stairs. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "n": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Climbing Stairs"
+      },
+      {
+        "input": {
+          "n": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Climbing Stairs"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def climbStairs(self, n):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "n": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "n": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "house_robber": {
+    "id": "house_robber",
+    "title": "House Robber",
+    "leetcode_number": 198,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 198: House Robber. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for House Robber"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for House Robber"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def rob(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "unique_paths": {
+    "id": "unique_paths",
+    "title": "Unique Paths",
+    "leetcode_number": 62,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 62: Unique Paths. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "m": null,
+          "n": 5
+        },
+        "output": null,
+        "explanation": "Example test case for Unique Paths"
+      },
+      {
+        "input": {
+          "m": null,
+          "n": 6
+        },
+        "output": null,
+        "explanation": "Example test case for Unique Paths"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def uniquePaths(self, m, n):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "m": null,
+          "n": 5
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "m": null,
+          "n": 6
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "coin_change": {
+    "id": "coin_change",
+    "title": "Coin Change",
+    "leetcode_number": 322,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 322: Coin Change. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "coins": "test",
+          "amount": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Coin Change"
+      },
+      {
+        "input": {
+          "coins": "example",
+          "amount": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Coin Change"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def coinChange(self, coins, amount):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "coins": "test",
+          "amount": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "coins": "example",
+          "amount": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "longest_increasing_subsequence": {
+    "id": "longest_increasing_subsequence",
+    "title": "Longest Increasing Subsequence",
+    "leetcode_number": 300,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 300: Longest Increasing Subsequence. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Increasing Subsequence"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Increasing Subsequence"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def lengthOfLIS(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "decode_ways": {
+    "id": "decode_ways",
+    "title": "Decode Ways",
+    "leetcode_number": 91,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 91: Decode Ways. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Decode Ways"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Decode Ways"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def numDecodings(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "word_break": {
+    "id": "word_break",
+    "title": "Word Break",
+    "leetcode_number": 139,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 139: Word Break. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test",
+          "wordDict": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Word Break"
+      },
+      {
+        "input": {
+          "s": "example",
+          "wordDict": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Word Break"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def wordBreak(self, s, wordDict):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test",
+          "wordDict": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example",
+          "wordDict": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "longest_palindromic_substring": {
+    "id": "longest_palindromic_substring",
+    "title": "Longest Palindromic Substring",
+    "leetcode_number": 5,
+    "difficulty": "Medium",
+    "category": "DP / Expand",
+    "description": "LeetCode 5: Longest Palindromic Substring. This is a Medium problem in the DP / Expand category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Palindromic Substring"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Longest Palindromic Substring"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def longestPalindrome(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP / Expand patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "palindromic_substrings": {
+    "id": "palindromic_substrings",
+    "title": "Palindromic Substrings",
+    "leetcode_number": 647,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 647: Palindromic Substrings. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Palindromic Substrings"
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Palindromic Substrings"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def countSubstrings(self, s):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "s": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "s": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "maximum_product_subarray": {
+    "id": "maximum_product_subarray",
+    "title": "Maximum Product Subarray",
+    "leetcode_number": 152,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 152: Maximum Product Subarray. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Maximum Product Subarray"
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Maximum Product Subarray"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def maxProduct(self, nums):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "nums": [
+            1,
+            2,
+            3
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "nums": [
+            4,
+            5,
+            6
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "minimum_path_sum": {
+    "id": "minimum_path_sum",
+    "title": "Minimum Path Sum",
+    "leetcode_number": 64,
+    "difficulty": "Medium",
+    "category": "DP",
+    "description": "LeetCode 64: Minimum Path Sum. This is a Medium problem in the DP category.",
+    "examples": [
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Minimum Path Sum"
+      },
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "output": null,
+        "explanation": "Example test case for Minimum Path Sum"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def minPathSum(self, grid):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "grid": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DP patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "rotate_image": {
+    "id": "rotate_image",
+    "title": "Rotate Image",
+    "leetcode_number": 48,
+    "difficulty": "Medium",
+    "category": "Array/Matrix",
+    "description": "LeetCode 48: Rotate Image. This is a Medium problem in the Array/Matrix category.",
+    "examples": [
+      {
+        "input": {
+          "matrix": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Rotate Image"
+      },
+      {
+        "input": {
+          "matrix": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Rotate Image"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def rotate(self, matrix):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "matrix": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "matrix": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Array/Matrix patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "spiral_matrix": {
+    "id": "spiral_matrix",
+    "title": "Spiral Matrix",
+    "leetcode_number": 54,
+    "difficulty": "Medium",
+    "category": "Array/Matrix",
+    "description": "LeetCode 54: Spiral Matrix. This is a Medium problem in the Array/Matrix category.",
+    "examples": [
+      {
+        "input": {
+          "matrix": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Spiral Matrix"
+      },
+      {
+        "input": {
+          "matrix": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Spiral Matrix"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def spiralOrder(self, matrix):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "matrix": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "matrix": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Array/Matrix patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "set_matrix_zeroes": {
+    "id": "set_matrix_zeroes",
+    "title": "Set Matrix Zeroes",
+    "leetcode_number": 73,
+    "difficulty": "Medium",
+    "category": "Array/Matrix",
+    "description": "LeetCode 73: Set Matrix Zeroes. This is a Medium problem in the Array/Matrix category.",
+    "examples": [
+      {
+        "input": {
+          "matrix": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Set Matrix Zeroes"
+      },
+      {
+        "input": {
+          "matrix": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Set Matrix Zeroes"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def setZeroes(self, matrix):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "matrix": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "matrix": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Array/Matrix patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "merge_intervals": {
+    "id": "merge_intervals",
+    "title": "Merge Intervals",
+    "leetcode_number": 56,
+    "difficulty": "Medium",
+    "category": "Intervals",
+    "description": "LeetCode 56: Merge Intervals. This is a Medium problem in the Intervals category.",
+    "examples": [
+      {
+        "input": {
+          "intervals": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Merge Intervals"
+      },
+      {
+        "input": {
+          "intervals": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Merge Intervals"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def merge(self, intervals):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "intervals": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "intervals": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Intervals patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "insert_interval": {
+    "id": "insert_interval",
+    "title": "Insert Interval",
+    "leetcode_number": 57,
+    "difficulty": "Medium",
+    "category": "Intervals",
+    "description": "LeetCode 57: Insert Interval. This is a Medium problem in the Intervals category.",
+    "examples": [
+      {
+        "input": {
+          "intervals": "test",
+          "newInterval": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Insert Interval"
+      },
+      {
+        "input": {
+          "intervals": "example",
+          "newInterval": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Insert Interval"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def insert(self, intervals, newInterval):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "intervals": "test",
+          "newInterval": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "intervals": "example",
+          "newInterval": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Intervals patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "lru_cache": {
+    "id": "lru_cache",
+    "title": "LRU Cache",
+    "leetcode_number": 146,
+    "difficulty": "Medium",
+    "category": "Design, Hash",
+    "description": "LeetCode 146: LRU Cache. This is a Medium problem in the Design, Hash category.",
+    "examples": [],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def LRUCache(self):\n        # Your code here\n        pass",
+    "test_cases": [],
+    "hints": [
+      "Think about Design, Hash patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "encode_decode_strings": {
+    "id": "encode_decode_strings",
+    "title": "Encode and Decode Strings",
+    "leetcode_number": 271,
+    "difficulty": "Medium",
+    "category": "Design, String",
+    "description": "LeetCode 271: Encode and Decode Strings. This is a Medium problem in the Design, String category.",
+    "examples": [
+      {
+        "input": {
+          "strs": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Encode and Decode Strings"
+      },
+      {
+        "input": {
+          "strs": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Encode and Decode Strings"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def encode(self, strs):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "strs": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "strs": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Design, String patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "trapping_rain_water": {
+    "id": "trapping_rain_water",
+    "title": "Trapping Rain Water",
+    "leetcode_number": 42,
+    "difficulty": "Hard",
+    "category": "Two Pointers",
+    "description": "LeetCode 42: Trapping Rain Water. This is a Hard problem in the Two Pointers category.",
+    "examples": [
+      {
+        "input": {
+          "height": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Trapping Rain Water"
+      },
+      {
+        "input": {
+          "height": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Trapping Rain Water"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def trap(self, height):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "height": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "height": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Two Pointers patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "binary_tree_maximum_path_sum": {
+    "id": "binary_tree_maximum_path_sum",
+    "title": "Binary Tree Maximum Path Sum",
+    "leetcode_number": 124,
+    "difficulty": "Hard",
+    "category": "DFS, Tree",
+    "description": "LeetCode 124: Binary Tree Maximum Path Sum. This is a Hard problem in the DFS, Tree category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Binary Tree Maximum Path Sum"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Binary Tree Maximum Path Sum"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def maxPathSum(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about DFS, Tree patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "serialize_deserialize_binary_tree": {
+    "id": "serialize_deserialize_binary_tree",
+    "title": "Serialize and Deserialize Binary Tree",
+    "leetcode_number": 297,
+    "difficulty": "Hard",
+    "category": "Design/DFS/BFS",
+    "description": "LeetCode 297: Serialize and Deserialize Binary Tree. This is a Hard problem in the Design/DFS/BFS category.",
+    "examples": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Serialize and Deserialize Binary Tree"
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Serialize and Deserialize Binary Tree"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def serialize(self, root):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "root": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "root": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Design/DFS/BFS patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "word_ladder": {
+    "id": "word_ladder",
+    "title": "Word Ladder",
+    "leetcode_number": 127,
+    "difficulty": "Hard",
+    "category": "BFS, Graph",
+    "description": "LeetCode 127: Word Ladder. This is a Hard problem in the BFS, Graph category.",
+    "examples": [
+      {
+        "input": {
+          "beginWord": 5,
+          "endWord": 5,
+          "wordList": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Word Ladder"
+      },
+      {
+        "input": {
+          "beginWord": 6,
+          "endWord": 6,
+          "wordList": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Word Ladder"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "beginWord": 5,
+          "endWord": 5,
+          "wordList": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "beginWord": 6,
+          "endWord": 6,
+          "wordList": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about BFS, Graph patterns",
+      "Consider time and space complexity"
+    ]
+  },
+  "merge_k_sorted_lists": {
+    "id": "merge_k_sorted_lists",
+    "title": "Merge k Sorted Lists",
+    "leetcode_number": 23,
+    "difficulty": "Hard",
+    "category": "Heap, LinkedList",
+    "description": "LeetCode 23: Merge k Sorted Lists. This is a Hard problem in the Heap, LinkedList category.",
+    "examples": [
+      {
+        "input": {
+          "lists": "test"
+        },
+        "output": null,
+        "explanation": "Example test case for Merge k Sorted Lists"
+      },
+      {
+        "input": {
+          "lists": "example"
+        },
+        "output": null,
+        "explanation": "Example test case for Merge k Sorted Lists"
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10^4",
+      "Follow standard LeetCode constraints"
+    ],
+    "template": "class Solution:\n    def mergeKLists(self, lists):\n        # Your code here\n        pass",
+    "test_cases": [
+      {
+        "input": {
+          "lists": "test"
+        },
+        "expected": null
+      },
+      {
+        "input": {
+          "lists": "example"
+        },
+        "expected": null
+      }
+    ],
+    "hints": [
+      "Think about Heap, LinkedList patterns",
+      "Consider time and space complexity"
+    ]
+  }
+}
