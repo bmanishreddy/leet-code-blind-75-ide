@@ -13,11 +13,50 @@ A web-based IDE for practicing LeetCode Blind 75 problems with built-in test exe
 - **Progress Tracking** - Track how many times you've solved each problem
 - **Keyboard Shortcuts** - Fast navigation and execution
 
-## Quick Start
+## Quick Start with Docker (Recommended)
+
+1. Clone the repository:
+```bash
+git clone https://github.com/bmanishreddy/leet-code-blind-75-ide.git
+cd leet-code-blind-75-ide
+```
+
+2. Build and run with Docker Compose:
+```bash
+docker-compose up --build
+```
+
+3. Open browser:
+```
+http://localhost:5000
+```
+
+That's it! The app will be running in a container.
+
+### Docker Commands
+
+```bash
+# Start the app
+docker-compose up
+
+# Start in background
+docker-compose up -d
+
+# Stop the app
+docker-compose down
+
+# View logs
+docker-compose logs -f
+
+# Rebuild after changes
+docker-compose up --build
+```
+
+## Manual Setup (Without Docker)
 
 1. Install dependencies:
 ```bash
-pip install flask llama-cpp-python
+pip install -r requirements.txt
 ```
 
 2. Run the app:
@@ -50,16 +89,25 @@ http://localhost:5000
 
 ```
 leet_code_blind_75_ide/
-├── app.py                 # Flask backend
-├── rag_hint_system.py     # Hint generation system
-├── visualizations.py      # Hardcoded visualizations for all problems
-├── knowledge_base.json    # Solutions and explanations
-├── questions.json         # Problem definitions
+├── app.py                      # Flask backend
+├── rag_hint_system.py          # Hint generation system
+├── visualizations.py           # Hardcoded visualizations
+├── knowledge_base.json         # Solutions and explanations
+├── questions.json              # Problem definitions
+├── requirements.txt            # Python dependencies
+├── Dockerfile                  # Docker image definition
+├── docker-compose.yml          # Docker orchestration
+├── models/
+│   └── deepseek-coder-1.3b-instruct.Q4_K_M.gguf
 ├── templates/
-│   └── index.html         # Main UI
+│   └── index.html              # Main UI
 └── static/
-    ├── css/style.css
-    └── js/app.js
+    ├── css/
+    │   ├── style.css
+    │   └── resize.css
+    └── js/
+        ├── app.js
+        └── resize.js
 ```
 
 ## LLM Model
@@ -89,12 +137,21 @@ Every problem has a custom ASCII visualization showing:
 
 Examples: Two Sum, Binary Search, Climbing Stairs, Valid Parentheses, etc.
 
+## Technical Details
+
+- **Backend**: Flask (Python 3.10+)
+- **Frontend**: Vanilla JavaScript, CodeMirror
+- **LLM**: Deepseek-Coder-1.3B (via llama-cpp-python)
+- **Container**: Docker with Python 3.10-slim base
+- **Port**: 5000
+
 ## Notes
 
 - Code execution has a 10-second timeout
 - Only Python is supported currently
 - Test cases run against your `Solution` class
 - Success tracking is stored in browser localStorage
+- Docker setup includes hot-reload for development
 
 ## License
 
